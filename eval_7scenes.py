@@ -9,6 +9,7 @@ import csv
 import json
 import logging
 import os
+import time
 import warnings
 from collections import defaultdict
 from contextlib import nullcontext
@@ -35,9 +36,11 @@ USE_AVGGT = os.environ.get("USE_AVGGT", "0").lower() in {"1", "true", "yes", "on
 AVGGT_SUBSAMPLE_FACTOR = int(os.environ.get("AVGGT_SUBSAMPLE_FACTOR", "4"))
 AVGGT_TEARLY = int(os.environ.get("AVGGT_TEARLY", "9"))
 AVGGT_PRESERVE_DIAGONAL = os.environ.get("AVGGT_PRESERVE_DIAGONAL", "0").lower() in {"1", "true", "yes", "on"}
+PROFILE = os.environ.get("PROFILE", "0").lower() in {"1", "true", "yes", "on"}
 OUTPUT_SUFFIX = f"_avggt{AVGGT_SUBSAMPLE_FACTOR}" if USE_AVGGT else ""
 OUTPUT_JSON = SERVER_ROOT / f"results/7scenes_manifest_eval{OUTPUT_SUFFIX}.json"
 OUTPUT_EVAL_MANIFEST = SERVER_ROOT / f"results/7scenes_manifest_eval_frames{OUTPUT_SUFFIX}.csv"
+OUTPUT_PROFILE = SERVER_ROOT / f"results/7scenes_profile{OUTPUT_SUFFIX}.json"
 
 
 logging.getLogger("dinov2").setLevel(logging.WARNING)
@@ -75,6 +78,24 @@ def autocast_context(device, dtype):
 def metric_dtype(device):
     # MPS does not support float64 tensors; CPU/CUDA keep the original precision.
     return torch.float32 if device.type == "mps" else torch.float64
+
+
+def synchronize_device(device):
+    if device.type == "cuda":
+        torch.cuda.synchronize(device)
+    elif device.type == "mps" and hasattr(torch.mps, "synchronize"):
+        torch.mps.synchronize()
+
+
+def reset_peak_memory(device):
+    if device.type == "cuda":
+        torch.cuda.reset_peak_memory_stats(device)
+
+
+def peak_memory_gb(device):
+    if device.type == "cuda":
+        return torch.cuda.max_memory_allocated(device) / (1024**3)
+    return None
 
 
 def build_pair_index(n):
@@ -157,18 +178,29 @@ def load_sample(sample):
     return image_paths, np.stack(gt_extris)
 
 
-def run_inference(model, image_paths, device, dtype):
+def run_inference(model, image_paths, device, dtype, profile=False):
     images = load_and_preprocess_images(image_paths).to(device)
+    profile_result = None
+    if profile:
+        reset_peak_memory(device)
+        synchronize_device(device)
+        start_time = time.perf_counter()
     with torch.no_grad():
         with autocast_context(device, dtype):
             predictions = model(images)
+    if profile:
+        synchronize_device(device)
+        profile_result = {
+            "inference_seconds": time.perf_counter() - start_time,
+            "peak_memory_gb": peak_memory_gb(device),
+        }
     extrinsic, _ = pose_encoding_to_extri_intri(predictions["pose_enc"], images.shape[-2:])
-    return extrinsic[0]
+    return extrinsic[0], profile_result
 
 
-def evaluate_sample(model, sample, device, dtype):
+def evaluate_sample(model, sample, device, dtype, profile=False):
     image_paths, gt_extris = load_sample(sample)
-    pred_extri = run_inference(model, image_paths, device, dtype)
+    pred_extri, profile_result = run_inference(model, image_paths, device, dtype, profile=profile)
     n = len(image_paths)
     eval_dtype = metric_dtype(device)
 
@@ -178,7 +210,10 @@ def evaluate_sample(model, sample, device, dtype):
     gt_se3 = torch.cat([gt_t, pad], dim=1)
     r_err, t_err = se3_to_relative_pose_error(pred_se3, gt_se3, n)
 
-    return r_err.cpu().numpy(), t_err.cpu().numpy()
+    if profile_result is not None:
+        profile_result["num_frames"] = n
+
+    return r_err.cpu().numpy(), t_err.cpu().numpy(), profile_result
 
 
 def write_csv(path, rows):
@@ -191,6 +226,40 @@ def write_csv(path, rows):
         writer.writerows(rows)
 
 
+def write_profile(path, profile_rows, device, dtype):
+    if not profile_rows:
+        return
+
+    inference_times = np.array([row["inference_seconds"] for row in profile_rows], dtype=float)
+    memory_values = [row["peak_memory_gb"] for row in profile_rows if row["peak_memory_gb"] is not None]
+    profile = {
+        "model": "VGGT",
+        "use_avggt": USE_AVGGT,
+        "subsample_factor": AVGGT_SUBSAMPLE_FACTOR if USE_AVGGT else None,
+        "tearly": AVGGT_TEARLY if USE_AVGGT else None,
+        "preserve_diagonal": AVGGT_PRESERVE_DIAGONAL if USE_AVGGT else None,
+        "device": str(device),
+        "dtype": str(dtype),
+        "num_samples": len(profile_rows),
+        "total_inference_seconds": float(inference_times.sum()),
+        "mean_inference_seconds": float(inference_times.mean()),
+        "median_inference_seconds": float(np.median(inference_times)),
+        "peak_memory_gb": float(max(memory_values)) if memory_values else None,
+        "samples": {
+            row["key"]: {
+                "num_frames": row["num_frames"],
+                "inference_seconds": row["inference_seconds"],
+                "peak_memory_gb": row["peak_memory_gb"],
+            }
+            for row in profile_rows
+        },
+    }
+
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("w", encoding="utf-8") as f:
+        json.dump(profile, f, indent=2)
+
+
 def main():
     torch.manual_seed(SEED)
     np.random.seed(SEED)
@@ -201,6 +270,8 @@ def main():
     device = select_device()
     dtype = select_inference_dtype(device)
     print(f"Using device: {device} ({dtype})")
+    if PROFILE:
+        print("Profiling enabled: measuring model inference time and CUDA peak memory per window")
 
     print("Loading model...")
     model = VGGT.from_pretrained(MODEL_NAME_OR_PATH)
@@ -220,16 +291,25 @@ def main():
     all_r, all_t = [], []
     results = {}
     eval_manifest_rows = []
+    profile_rows = []
 
     for sample in samples:
         key = f"{sample['scene']}/{sample['window']}"
         print(f"\n[{key}]")
-        r_err, t_err = evaluate_sample(model, sample, device, dtype)
+        r_err, t_err, profile_result = evaluate_sample(model, sample, device, dtype, profile=PROFILE)
         auc30, _ = calculate_auc_np(r_err, t_err, 30)
         auc15, _ = calculate_auc_np(r_err, t_err, 15)
         auc5, _ = calculate_auc_np(r_err, t_err, 5)
         auc3, _ = calculate_auc_np(r_err, t_err, 3)
         print(f"  AUC@30={auc30:.4f}  AUC@15={auc15:.4f}  AUC@5={auc5:.4f}  AUC@3={auc3:.4f}")
+        if profile_result is not None:
+            profile_rows.append({"key": key, **profile_result})
+            memory_text = (
+                f"{profile_result['peak_memory_gb']:.2f} GB"
+                if profile_result["peak_memory_gb"] is not None
+                else "n/a"
+            )
+            print(f"  inference={profile_result['inference_seconds']:.4f}s  peak_memory={memory_text}")
 
         all_r.extend(r_err)
         all_t.extend(t_err)
@@ -256,8 +336,11 @@ def main():
     with OUTPUT_JSON.open("w", encoding="utf-8") as f:
         json.dump(results, f, indent=2)
     write_csv(OUTPUT_EVAL_MANIFEST, eval_manifest_rows)
+    write_profile(OUTPUT_PROFILE, profile_rows, device, dtype)
     print(f"\nResults saved to {OUTPUT_JSON}")
     print(f"Eval manifest saved to {OUTPUT_EVAL_MANIFEST}")
+    if PROFILE:
+        print(f"Profile saved to {OUTPUT_PROFILE}")
 
 
 if __name__ == "__main__":

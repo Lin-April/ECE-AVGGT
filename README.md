@@ -25,6 +25,21 @@ uv run python eval_7scenes.py
 
 Results are written under `results/`.
 
+## Profiling
+
+Set `PROFILE=1` to write inference time and CUDA peak memory metrics to a
+separate profile file while keeping the accuracy output unchanged.
+
+```bash
+PROFILE=1 uv run python eval_re10k.py
+PROFILE=1 uv run python eval_7scenes.py
+PROFILE=1 USE_AVGGT=1 AVGGT_SUBSAMPLE_FACTOR=4 uv run python eval_re10k.py
+PROFILE=1 USE_AVGGT=1 AVGGT_SUBSAMPLE_FACTOR=4 uv run python eval_7scenes.py
+```
+
+Profile results are written under `results/`, for example
+`re10k_profile.json`, `7scenes_profile.json`, and `_avggt4` variants.
+
 ## AVGGT Patch
 
 The local `avggt/` package monkey-patches the loaded VGGT model at inference
