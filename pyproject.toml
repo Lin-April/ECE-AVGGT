@@ -1,0 +1,19 @@
+[project]
+name = "vggt-eval-code"
+version = "0.1.0"
+description = "VGGT camera pose evaluation scripts for RealEstate10K and 7-Scenes subsets."
+readme = "README.md"
+requires-python = ">=3.10,<3.13"
+dependencies = [
+    "einops",
+    "huggingface-hub",
+    "numpy==1.26.1",
+    "Pillow",
+    "safetensors",
+    "torch==2.3.1",
+    "torchvision==0.18.1",
+    "vggt @ git+https://github.com/facebookresearch/vggt.git",
+]
+
+[tool.uv]
+package = false
