@@ -160,7 +160,11 @@ def run_re10k(model, data_root, args, device, dtype):
         auc15, _ = eval_re10k.calculate_auc_np(r_err, t_err, 15)
         auc5, _ = eval_re10k.calculate_auc_np(r_err, t_err, 5)
         auc3, _ = eval_re10k.calculate_auc_np(r_err, t_err, 3)
-        print(f"    AUC@30={auc30:.4f} inference={profile_result['inference_seconds']:.4f}s")
+        print(
+            f"    AUC@30={auc30:.4f} AUC@15={auc15:.4f} "
+            f"AUC@5={auc5:.4f} AUC@3={auc3:.4f} "
+            f"inference={profile_result['inference_seconds']:.4f}s"
+        )
         all_r.extend(r_err)
         all_t.extend(t_err)
         profile_rows.append({"key": scene_id, **profile_result})
@@ -210,7 +214,11 @@ def run_7scenes(model, data_root, args, device, dtype):
         auc15, _ = eval_7scenes.calculate_auc_np(r_err, t_err, 15)
         auc5, _ = eval_7scenes.calculate_auc_np(r_err, t_err, 5)
         auc3, _ = eval_7scenes.calculate_auc_np(r_err, t_err, 3)
-        print(f"    AUC@30={auc30:.4f} inference={profile_result['inference_seconds']:.4f}s")
+        print(
+            f"    AUC@30={auc30:.4f} AUC@15={auc15:.4f} "
+            f"AUC@5={auc5:.4f} AUC@3={auc3:.4f} "
+            f"inference={profile_result['inference_seconds']:.4f}s"
+        )
         all_r.extend(r_err)
         all_t.extend(t_err)
         profile_rows.append({"key": key, **profile_result})
