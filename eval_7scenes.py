@@ -2,13 +2,13 @@
 7-Scenes camera pose evaluation for VGGT using the final dataset manifest.
 
 Path convention:
-  SERVER_ROOT / DATASET_REL_DIR points to the copied 7-scenes-final directory.
+  DATA_ROOT / DATASET_REL_DIR points to the copied 7-scenes-final directory.
   frame_manifest.csv stores paths relative to DATASET_REL_DIR.
 """
+import argparse
 import csv
 import json
 import logging
-import os
 import time
 import warnings
 from collections import defaultdict
@@ -25,22 +25,13 @@ from vggt.utils.pose_enc import pose_encoding_to_extri_intri
 from vggt.utils.rotation import mat_to_quat
 
 
-# Local path configuration. Defaults to this repository; override with EVAL_CODE_ROOT.
+# Local path configuration. Defaults to this repository.
 PROJECT_ROOT = Path(__file__).resolve().parent
-SERVER_ROOT = Path(os.environ.get("EVAL_CODE_ROOT", PROJECT_ROOT)).expanduser().resolve()
 DATASET_REL_DIR = Path("7-scenes-final")
 MANIFEST_NAME = "frame_manifest.csv"
+DEFAULT_FRAMES_PER_WINDOW = 20
 MODEL_NAME_OR_PATH = "facebook/VGGT-1B"
 SEED = 0
-USE_AVGGT = os.environ.get("USE_AVGGT", "0").lower() in {"1", "true", "yes", "on"}
-AVGGT_SUBSAMPLE_FACTOR = int(os.environ.get("AVGGT_SUBSAMPLE_FACTOR", "4"))
-AVGGT_TEARLY = int(os.environ.get("AVGGT_TEARLY", "9"))
-AVGGT_PRESERVE_DIAGONAL = os.environ.get("AVGGT_PRESERVE_DIAGONAL", "0").lower() in {"1", "true", "yes", "on"}
-PROFILE = os.environ.get("PROFILE", "0").lower() in {"1", "true", "yes", "on"}
-OUTPUT_SUFFIX = f"_avggt{AVGGT_SUBSAMPLE_FACTOR}" if USE_AVGGT else ""
-OUTPUT_JSON = SERVER_ROOT / f"results/7scenes_manifest_eval{OUTPUT_SUFFIX}.json"
-OUTPUT_EVAL_MANIFEST = SERVER_ROOT / f"results/7scenes_manifest_eval_frames{OUTPUT_SUFFIX}.csv"
-OUTPUT_PROFILE = SERVER_ROOT / f"results/7scenes_profile{OUTPUT_SUFFIX}.json"
 
 
 logging.getLogger("dinov2").setLevel(logging.WARNING)
@@ -49,8 +40,43 @@ torch.set_float32_matmul_precision("highest")
 torch.backends.cudnn.allow_tf32 = False
 
 
-def dataset_dir() -> Path:
-    return SERVER_ROOT / DATASET_REL_DIR
+def parse_args():
+    parser = argparse.ArgumentParser(description="Evaluate VGGT camera poses on 7-Scenes.")
+    parser.add_argument("--data-root", type=Path, default=PROJECT_ROOT, help="Root containing 7-scenes-final and results/.")
+    parser.add_argument("--frames", type=int, default=DEFAULT_FRAMES_PER_WINDOW, help="Frames sampled per window.")
+    parser.add_argument("--profile", action="store_true", help="Write inference-time profile JSON.")
+    parser.add_argument("--avggt", action="store_true", help="Apply the AVGGT inference-time patch.")
+    parser.add_argument("--subsample-factor", type=int, choices=(1, 2, 4, 6, 9), default=4, help="AVGGT K/V subsampling factor.")
+    parser.add_argument("--tearly", type=int, default=9, help="Number of early global blocks converted to frame attention.")
+    parser.add_argument(
+        "--preserve-diagonal",
+        action="store_true",
+        help="Add explicit diagonal self-attention terms in AVGGT.",
+    )
+    args = parser.parse_args()
+    if args.frames < 2:
+        parser.error("--frames must be at least 2")
+    return args
+
+
+def dataset_dir(data_root) -> Path:
+    return data_root / DATASET_REL_DIR
+
+
+def output_suffix(args):
+    suffix = f"_avggt{args.subsample_factor}" if args.avggt else ""
+    if args.frames != DEFAULT_FRAMES_PER_WINDOW:
+        suffix += f"_f{args.frames}"
+    return suffix
+
+
+def output_paths(data_root, args):
+    suffix = output_suffix(args)
+    return {
+        "results": data_root / f"results/7scenes_manifest_eval{suffix}.json",
+        "manifest": data_root / f"results/7scenes_manifest_eval_frames{suffix}.csv",
+        "profile": data_root / f"results/7scenes_profile{suffix}.json",
+    }
 
 
 def select_device():
@@ -85,17 +111,6 @@ def synchronize_device(device):
         torch.cuda.synchronize(device)
     elif device.type == "mps" and hasattr(torch.mps, "synchronize"):
         torch.mps.synchronize()
-
-
-def reset_peak_memory(device):
-    if device.type == "cuda":
-        torch.cuda.reset_peak_memory_stats(device)
-
-
-def peak_memory_gb(device):
-    if device.type == "cuda":
-        return torch.cuda.max_memory_allocated(device) / (1024**3)
-    return None
 
 
 def build_pair_index(n):
@@ -138,8 +153,15 @@ def se3_to_relative_pose_error(pred_se3, gt_se3, n):
     return r_err, t_err
 
 
-def read_manifest():
-    manifest_path = dataset_dir() / MANIFEST_NAME
+def sample_window_rows(frame_rows, frames_per_window):
+    frame_rows.sort(key=lambda r: int(r["selected_index"]))
+    if len(frame_rows) < frames_per_window:
+        raise ValueError(f"Need {frames_per_window} frames, got {len(frame_rows)}")
+    return frame_rows[:frames_per_window]
+
+
+def read_manifest(data_root, frames_per_window):
+    manifest_path = dataset_dir(data_root) / MANIFEST_NAME
     with manifest_path.open(newline="", encoding="utf-8") as f:
         rows = list(csv.DictReader(f))
 
@@ -149,17 +171,17 @@ def read_manifest():
 
     samples = []
     for (scene, window), frame_rows in sorted(groups.items()):
-        frame_rows.sort(key=lambda r: int(r["selected_index"]))
-        samples.append({"scene": scene, "window": window, "frames": frame_rows})
+        sampled = sample_window_rows(frame_rows, frames_per_window)
+        samples.append({"scene": scene, "window": window, "frames": sampled})
     return samples
 
 
-def load_sample(sample):
+def load_sample(sample, data_root):
     image_paths = []
     gt_extris = []
     for row in sample["frames"]:
-        image_path = dataset_dir() / row["color_path"]
-        pose_path = dataset_dir() / row["pose_path"]
+        image_path = dataset_dir(data_root) / row["color_path"]
+        pose_path = dataset_dir(data_root) / row["pose_path"]
         if not image_path.exists():
             raise FileNotFoundError(image_path)
         if not pose_path.exists():
@@ -182,7 +204,6 @@ def run_inference(model, image_paths, device, dtype, profile=False):
     images = load_and_preprocess_images(image_paths).to(device)
     profile_result = None
     if profile:
-        reset_peak_memory(device)
         synchronize_device(device)
         start_time = time.perf_counter()
     with torch.no_grad():
@@ -192,14 +213,13 @@ def run_inference(model, image_paths, device, dtype, profile=False):
         synchronize_device(device)
         profile_result = {
             "inference_seconds": time.perf_counter() - start_time,
-            "peak_memory_gb": peak_memory_gb(device),
         }
     extrinsic, _ = pose_encoding_to_extri_intri(predictions["pose_enc"], images.shape[-2:])
     return extrinsic[0], profile_result
 
 
-def evaluate_sample(model, sample, device, dtype, profile=False):
-    image_paths, gt_extris = load_sample(sample)
+def evaluate_sample(model, sample, data_root, device, dtype, profile=False):
+    image_paths, gt_extris = load_sample(sample, data_root)
     pred_extri, profile_result = run_inference(model, image_paths, device, dtype, profile=profile)
     n = len(image_paths)
     eval_dtype = metric_dtype(device)
@@ -226,30 +246,28 @@ def write_csv(path, rows):
         writer.writerows(rows)
 
 
-def write_profile(path, profile_rows, device, dtype):
+def write_profile(path, profile_rows, args, device, dtype):
     if not profile_rows:
         return
 
     inference_times = np.array([row["inference_seconds"] for row in profile_rows], dtype=float)
-    memory_values = [row["peak_memory_gb"] for row in profile_rows if row["peak_memory_gb"] is not None]
     profile = {
         "model": "VGGT",
-        "use_avggt": USE_AVGGT,
-        "subsample_factor": AVGGT_SUBSAMPLE_FACTOR if USE_AVGGT else None,
-        "tearly": AVGGT_TEARLY if USE_AVGGT else None,
-        "preserve_diagonal": AVGGT_PRESERVE_DIAGONAL if USE_AVGGT else None,
+        "use_avggt": args.avggt,
+        "subsample_factor": args.subsample_factor if args.avggt else None,
+        "tearly": args.tearly if args.avggt else None,
+        "preserve_diagonal": args.preserve_diagonal if args.avggt else None,
+        "frames_per_window": args.frames,
         "device": str(device),
         "dtype": str(dtype),
         "num_samples": len(profile_rows),
         "total_inference_seconds": float(inference_times.sum()),
         "mean_inference_seconds": float(inference_times.mean()),
         "median_inference_seconds": float(np.median(inference_times)),
-        "peak_memory_gb": float(max(memory_values)) if memory_values else None,
         "samples": {
             row["key"]: {
                 "num_frames": row["num_frames"],
                 "inference_seconds": row["inference_seconds"],
-                "peak_memory_gb": row["peak_memory_gb"],
             }
             for row in profile_rows
         },
@@ -261,31 +279,40 @@ def write_profile(path, profile_rows, device, dtype):
 
 
 def main():
+    args = parse_args()
+    data_root = args.data_root.expanduser().resolve()
+    paths = output_paths(data_root, args)
+
     torch.manual_seed(SEED)
     np.random.seed(SEED)
 
-    samples = read_manifest()
-    print(f"Loaded {len(samples)} windows from {dataset_dir() / MANIFEST_NAME}")
+    samples = read_manifest(data_root, args.frames)
+    print(f"Loaded {len(samples)} windows from {dataset_dir(data_root) / MANIFEST_NAME}")
+    print(f"Evaluating {args.frames} frames per window")
 
     device = select_device()
     dtype = select_inference_dtype(device)
     print(f"Using device: {device} ({dtype})")
-    if PROFILE:
-        print("Profiling enabled: measuring model inference time and CUDA peak memory per window")
+    if args.profile:
+        print("Profiling enabled: measuring model inference time per window")
 
     print("Loading model...")
     model = VGGT.from_pretrained(MODEL_NAME_OR_PATH)
     model.eval().to(device)
-    if USE_AVGGT:
+    if args.avggt:
         from avggt import apply_avggt
 
         apply_avggt(
             model,
-            subsample_factor=AVGGT_SUBSAMPLE_FACTOR,
-            tearly=AVGGT_TEARLY,
-            preserve_diagonal=AVGGT_PRESERVE_DIAGONAL,
+            subsample_factor=args.subsample_factor,
+            tearly=args.tearly,
+            preserve_diagonal=args.preserve_diagonal,
         )
-        print(f"Applied AVGGT patch: factor={AVGGT_SUBSAMPLE_FACTOR}, tearly={AVGGT_TEARLY}")
+        print(
+            "Applied AVGGT patch: "
+            f"factor={args.subsample_factor}, tearly={args.tearly}, "
+            f"preserve_diagonal={args.preserve_diagonal}"
+        )
     print("Model loaded.")
 
     all_r, all_t = [], []
@@ -296,7 +323,14 @@ def main():
     for sample in samples:
         key = f"{sample['scene']}/{sample['window']}"
         print(f"\n[{key}]")
-        r_err, t_err, profile_result = evaluate_sample(model, sample, device, dtype, profile=PROFILE)
+        r_err, t_err, profile_result = evaluate_sample(
+            model,
+            sample,
+            data_root,
+            device,
+            dtype,
+            profile=args.profile,
+        )
         auc30, _ = calculate_auc_np(r_err, t_err, 30)
         auc15, _ = calculate_auc_np(r_err, t_err, 15)
         auc5, _ = calculate_auc_np(r_err, t_err, 5)
@@ -304,12 +338,7 @@ def main():
         print(f"  AUC@30={auc30:.4f}  AUC@15={auc15:.4f}  AUC@5={auc5:.4f}  AUC@3={auc3:.4f}")
         if profile_result is not None:
             profile_rows.append({"key": key, **profile_result})
-            memory_text = (
-                f"{profile_result['peak_memory_gb']:.2f} GB"
-                if profile_result["peak_memory_gb"] is not None
-                else "n/a"
-            )
-            print(f"  inference={profile_result['inference_seconds']:.4f}s  peak_memory={memory_text}")
+            print(f"  inference={profile_result['inference_seconds']:.4f}s")
 
         all_r.extend(r_err)
         all_t.extend(t_err)
@@ -332,15 +361,15 @@ def main():
     m3, _ = calculate_auc_np(all_r, all_t, 3)
     results["__mean__"] = {"auc30": float(m30), "auc15": float(m15), "auc5": float(m5), "auc3": float(m3)}
 
-    OUTPUT_JSON.parent.mkdir(parents=True, exist_ok=True)
-    with OUTPUT_JSON.open("w", encoding="utf-8") as f:
+    paths["results"].parent.mkdir(parents=True, exist_ok=True)
+    with paths["results"].open("w", encoding="utf-8") as f:
         json.dump(results, f, indent=2)
-    write_csv(OUTPUT_EVAL_MANIFEST, eval_manifest_rows)
-    write_profile(OUTPUT_PROFILE, profile_rows, device, dtype)
-    print(f"\nResults saved to {OUTPUT_JSON}")
-    print(f"Eval manifest saved to {OUTPUT_EVAL_MANIFEST}")
-    if PROFILE:
-        print(f"Profile saved to {OUTPUT_PROFILE}")
+    write_csv(paths["manifest"], eval_manifest_rows)
+    write_profile(paths["profile"], profile_rows, args, device, dtype)
+    print(f"\nResults saved to {paths['results']}")
+    print(f"Eval manifest saved to {paths['manifest']}")
+    if args.profile:
+        print(f"Profile saved to {paths['profile']}")
 
 
 if __name__ == "__main__":
