@@ -16,15 +16,52 @@ elsewhere, pass `--data-root`:
 uv run python eval_re10k.py --data-root /path/to/eval_code
 ```
 
+## Scripts
+
+Use separate scripts for evaluation, batch experiments, and plotting:
+
+```text
+eval_re10k.py      # Run one RealEstate10K eval configuration.
+eval_7scenes.py    # Run one 7-Scenes eval configuration.
+eval_batch.py      # Recommended: load VGGT once and run many configurations.
+plot_results.py    # Read results/ and generate interactive Plotly charts.
+```
+
 ## Experiment Checklist
 
-Run each experiment with `--profile`. This keeps the accuracy output unchanged
-and also writes inference-time metrics to a separate profile file.
+Recommended: use `eval_batch.py` to load VGGT once and run the full experiment
+matrix in one process. This is much faster than launching one command per
+configuration.
+
+```bash
+uv run python eval_batch.py --frames 20 100 200 --factors 1 2 4 6 9
+```
+
+Useful options:
+
+```bash
+uv run python eval_batch.py --datasets 7scenes --frames 20 --factors 1 2 4 6 9
+uv run python eval_batch.py --frames 20 100 200 --factors 1 2 4 6 9 --skip-existing
+uv run python eval_batch.py --frames 20 --factors 4 --warmup-samples 1
+```
+
+The batch runner always writes both accuracy and inference-time profile files.
+It runs baseline VGGT first, then applies the AVGGT patch and runs each
+subsampling factor.
+
+After the batch run finishes, generate plots with:
+
+```bash
+uv run python plot_results.py --frames 20 100 200 --factors 1 2 4 6 9
+```
 
 Important: `--frames` cannot exceed the number of frames available in each
 prepared RealEstate10K scene or 7-Scenes window. The small prepared manifests in
 this repository may only support `--frames 20`; `--frames 100` and
 `--frames 200` require larger prepared manifests/windows.
+
+The commands below are equivalent single-run commands. Use them only when you
+need to rerun one configuration manually.
 
 ### 1. Baseline VGGT
 
