@@ -16,30 +16,176 @@ elsewhere, pass `--data-root`:
 uv run python eval_re10k.py --data-root /path/to/eval_code
 ```
 
-## Run
+## Experiment Checklist
+
+Run each experiment with `--profile`. This keeps the accuracy output unchanged
+and also writes inference-time metrics to a separate profile file.
+
+Important: `--frames` cannot exceed the number of frames available in each
+prepared RealEstate10K scene or 7-Scenes window. The small prepared manifests in
+this repository may only support `--frames 20`; `--frames 100` and
+`--frames 200` require larger prepared manifests/windows.
+
+### 1. Baseline VGGT
+
+Frames 20:
 
 ```bash
-uv run python eval_re10k.py
-uv run python eval_7scenes.py
+uv run python eval_re10k.py --profile --frames 20
+uv run python eval_7scenes.py --profile --frames 20
+```
+
+Frames 100:
+
+```bash
+uv run python eval_re10k.py --profile --frames 100
+uv run python eval_7scenes.py --profile --frames 100
+```
+
+Frames 200:
+
+```bash
+uv run python eval_re10k.py --profile --frames 200
+uv run python eval_7scenes.py --profile --frames 200
+```
+
+### 2. AVGGT Factor 1
+
+Frames 20:
+
+```bash
+uv run python eval_re10k.py --profile --frames 20 --avggt --subsample-factor 1
+uv run python eval_7scenes.py --profile --frames 20 --avggt --subsample-factor 1
+```
+
+Frames 100:
+
+```bash
+uv run python eval_re10k.py --profile --frames 100 --avggt --subsample-factor 1
+uv run python eval_7scenes.py --profile --frames 100 --avggt --subsample-factor 1
+```
+
+Frames 200:
+
+```bash
+uv run python eval_re10k.py --profile --frames 200 --avggt --subsample-factor 1
+uv run python eval_7scenes.py --profile --frames 200 --avggt --subsample-factor 1
+```
+
+### 3. AVGGT Factor 2
+
+Frames 20:
+
+```bash
+uv run python eval_re10k.py --profile --frames 20 --avggt --subsample-factor 2
+uv run python eval_7scenes.py --profile --frames 20 --avggt --subsample-factor 2
+```
+
+Frames 100:
+
+```bash
+uv run python eval_re10k.py --profile --frames 100 --avggt --subsample-factor 2
+uv run python eval_7scenes.py --profile --frames 100 --avggt --subsample-factor 2
+```
+
+Frames 200:
+
+```bash
+uv run python eval_re10k.py --profile --frames 200 --avggt --subsample-factor 2
+uv run python eval_7scenes.py --profile --frames 200 --avggt --subsample-factor 2
+```
+
+### 4. AVGGT Factor 4
+
+Frames 20:
+
+```bash
+uv run python eval_re10k.py --profile --frames 20 --avggt --subsample-factor 4
+uv run python eval_7scenes.py --profile --frames 20 --avggt --subsample-factor 4
+```
+
+Frames 100:
+
+```bash
+uv run python eval_re10k.py --profile --frames 100 --avggt --subsample-factor 4
+uv run python eval_7scenes.py --profile --frames 100 --avggt --subsample-factor 4
+```
+
+Frames 200:
+
+```bash
+uv run python eval_re10k.py --profile --frames 200 --avggt --subsample-factor 4
+uv run python eval_7scenes.py --profile --frames 200 --avggt --subsample-factor 4
+```
+
+### 5. AVGGT Factor 6
+
+Frames 20:
+
+```bash
+uv run python eval_re10k.py --profile --frames 20 --avggt --subsample-factor 6
+uv run python eval_7scenes.py --profile --frames 20 --avggt --subsample-factor 6
+```
+
+Frames 100:
+
+```bash
+uv run python eval_re10k.py --profile --frames 100 --avggt --subsample-factor 6
+uv run python eval_7scenes.py --profile --frames 100 --avggt --subsample-factor 6
+```
+
+Frames 200:
+
+```bash
+uv run python eval_re10k.py --profile --frames 200 --avggt --subsample-factor 6
+uv run python eval_7scenes.py --profile --frames 200 --avggt --subsample-factor 6
+```
+
+### 6. AVGGT Factor 9
+
+Frames 20:
+
+```bash
+uv run python eval_re10k.py --profile --frames 20 --avggt --subsample-factor 9
+uv run python eval_7scenes.py --profile --frames 20 --avggt --subsample-factor 9
+```
+
+Frames 100:
+
+```bash
+uv run python eval_re10k.py --profile --frames 100 --avggt --subsample-factor 9
+uv run python eval_7scenes.py --profile --frames 100 --avggt --subsample-factor 9
+```
+
+Frames 200:
+
+```bash
+uv run python eval_re10k.py --profile --frames 200 --avggt --subsample-factor 9
+uv run python eval_7scenes.py --profile --frames 200 --avggt --subsample-factor 9
 ```
 
 Results are written under `results/`.
 
-## Profiling
+Accuracy files:
 
-Pass `--profile` to write inference-time metrics to a separate profile file
-while keeping the accuracy output unchanged.
-
-```bash
-uv run python eval_re10k.py --profile
-uv run python eval_7scenes.py --profile
-uv run python eval_re10k.py --profile --avggt --subsample-factor 4
-uv run python eval_7scenes.py --profile --avggt --subsample-factor 4
+```text
+results/7scenes_manifest_eval*.json
+results/re10k_manifest_eval*.json
 ```
 
-Profile results are written under `results/`, for example
-`re10k_profile.json`, `7scenes_profile.json`, and `_avggt4` variants. The
-profile files record inference time only.
+Inference-time profile files:
+
+```text
+results/7scenes_profile*.json
+results/re10k_profile*.json
+```
+
+Used-frame manifests:
+
+```text
+results/7scenes_manifest_eval_frames*.csv
+results/re10k_manifest_eval_frames*.csv
+```
 
 ## AVGGT Patch
 
@@ -70,7 +216,11 @@ Generate interactive Plotly charts from the default `results/` directory:
 uv run python plot_results.py
 ```
 
-By default this expects baseline plus AVGGT factors `2`, `4`, `6`, and `9` for
-both datasets at `--frames 20`. If files are missing, the script prints the exact
-eval commands needed to generate them. Plots and `summary.csv` are written to
-`results/plots/`.
+Plot the full experiment grid listed above:
+
+```bash
+uv run python plot_results.py --frames 20 100 200 --factors 1 2 4 6 9
+```
+
+If files are missing, the script prints the exact eval commands needed to
+generate them. Plots and `summary.csv` are written to `results/plots/`.
