@@ -17,7 +17,8 @@ from vggt.models.vggt import VGGT
 
 PROJECT_ROOT = Path(__file__).resolve().parent
 MODEL_NAME_OR_PATH = "facebook/VGGT-1B"
-DEFAULT_FRAMES = (20, 100, 200)
+DEFAULT_RE10K_FRAMES = (5, 10, 20, 60)
+DEFAULT_7SCENES_FRAMES = (5, 10, 20)
 DEFAULT_FACTORS = (1, 2, 4, 6, 9)
 DATASETS = ("re10k", "7scenes")
 
@@ -26,7 +27,22 @@ def parse_args():
     parser = argparse.ArgumentParser(description="Run baseline and AVGGT evals with one loaded VGGT model.")
     parser.add_argument("--data-root", type=Path, default=PROJECT_ROOT, help="Root containing datasets and results/.")
     parser.add_argument("--datasets", nargs="+", choices=DATASETS, default=list(DATASETS), help="Datasets to evaluate.")
-    parser.add_argument("--frames", nargs="+", type=int, default=list(DEFAULT_FRAMES), help="Frame counts to evaluate.")
+    parser.add_argument("--frames", nargs="+", type=int, default=None, help="Override frame counts for every selected dataset.")
+    parser.add_argument(
+        "--re10k-frames",
+        nargs="+",
+        type=int,
+        default=list(DEFAULT_RE10K_FRAMES),
+        help="RealEstate10K frame counts to evaluate.",
+    )
+    parser.add_argument(
+        "--7scenes-frames",
+        dest="seven_scenes_frames",
+        nargs="+",
+        type=int,
+        default=list(DEFAULT_7SCENES_FRAMES),
+        help="7-Scenes frame counts to evaluate.",
+    )
     parser.add_argument(
         "--factors",
         nargs="+",
@@ -47,11 +63,22 @@ def parse_args():
     parser.add_argument("--warmup-samples", type=int, default=0, help="Unrecorded warmup samples per config.")
     parser.add_argument("--no-baseline", action="store_true", help="Only run AVGGT configs.")
     args = parser.parse_args()
-    if any(frame_count < 2 for frame_count in args.frames):
-        parser.error("--frames values must be at least 2")
+    frame_groups = [args.re10k_frames, args.seven_scenes_frames]
+    if args.frames is not None:
+        frame_groups.append(args.frames)
+    if any(frame_count < 2 for group in frame_groups for frame_count in group):
+        parser.error("frame counts must be at least 2")
     if args.warmup_samples < 0:
         parser.error("--warmup-samples must be non-negative")
     return args
+
+
+def frames_for_dataset(args, dataset):
+    if args.frames is not None:
+        return args.frames
+    if dataset == "re10k":
+        return args.re10k_frames
+    return args.seven_scenes_frames
 
 
 def make_eval_args(args, frames, avggt=False, factor=4):
@@ -260,14 +287,14 @@ def main():
     counts = {"done": 0, "skipped": 0}
     if not args.no_baseline:
         for dataset in args.datasets:
-            for frames in args.frames:
+            for frames in frames_for_dataset(args, dataset):
                 status = run_config(model, data_root, args, device, dtype, dataset, frames, False, 4)
                 counts[status] += 1
 
     for factor in args.factors:
         apply_avggt(model, args, factor)
         for dataset in args.datasets:
-            for frames in args.frames:
+            for frames in frames_for_dataset(args, dataset):
                 status = run_config(model, data_root, args, device, dtype, dataset, frames, True, factor)
                 counts[status] += 1
 
@@ -275,7 +302,8 @@ def main():
     print("Generate plots with:")
     print(
         "  uv run python plot_results.py "
-        f"--frames {' '.join(str(frame) for frame in args.frames)} "
+        f"--re10k-frames {' '.join(str(frame) for frame in frames_for_dataset(args, 're10k'))} "
+        f"--7scenes-frames {' '.join(str(frame) for frame in frames_for_dataset(args, '7scenes'))} "
         f"--factors {' '.join(str(factor) for factor in args.factors)}"
     )
 

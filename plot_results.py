@@ -14,7 +14,9 @@ import plotly.graph_objects as go
 
 DEFAULT_FRAMES = 20
 SUPPORTED_FACTORS = (1, 2, 4, 6, 9)
-DEFAULT_FACTORS = (2, 4, 6, 9)
+DEFAULT_FACTORS = (1, 2, 4, 6, 9)
+DEFAULT_RE10K_FRAMES = (5, 10, 20, 60)
+DEFAULT_7SCENES_FRAMES = (5, 10, 20)
 DATASET_TO_SCRIPT = {
     "7scenes": "eval_7scenes.py",
     "re10k": "eval_re10k.py",
@@ -76,7 +78,22 @@ def parse_args():
         default=list(DATASET_TO_SCRIPT),
         help="Datasets to include.",
     )
-    parser.add_argument("--frames", nargs="+", type=int, default=[DEFAULT_FRAMES], help="Frame counts to include.")
+    parser.add_argument("--frames", nargs="+", type=int, default=None, help="Override frame counts for every selected dataset.")
+    parser.add_argument(
+        "--re10k-frames",
+        nargs="+",
+        type=int,
+        default=list(DEFAULT_RE10K_FRAMES),
+        help="RealEstate10K frame counts to include.",
+    )
+    parser.add_argument(
+        "--7scenes-frames",
+        dest="seven_scenes_frames",
+        nargs="+",
+        type=int,
+        default=list(DEFAULT_7SCENES_FRAMES),
+        help="7-Scenes frame counts to include.",
+    )
     parser.add_argument(
         "--factors",
         nargs="+",
@@ -86,13 +103,27 @@ def parse_args():
         help="AVGGT subsampling factors to include.",
     )
     parser.add_argument("--allow-missing", action="store_true", help="Plot available complete runs instead of failing.")
-    return parser.parse_args()
+    args = parser.parse_args()
+    frame_groups = [args.re10k_frames, args.seven_scenes_frames]
+    if args.frames is not None:
+        frame_groups.append(args.frames)
+    if any(frame_count < 2 for group in frame_groups for frame_count in group):
+        parser.error("frame counts must be at least 2")
+    return args
 
 
-def build_specs(datasets, frames, factors):
+def frames_for_dataset(args, dataset):
+    if args.frames is not None:
+        return args.frames
+    if dataset == "re10k":
+        return args.re10k_frames
+    return args.seven_scenes_frames
+
+
+def build_specs(datasets, dataset_frames, factors):
     specs = []
     for dataset in datasets:
-        for frame_count in frames:
+        for frame_count in dataset_frames[dataset]:
             specs.append(RunSpec(dataset=dataset, frames=frame_count))
             for factor in factors:
                 specs.append(RunSpec(dataset=dataset, frames=frame_count, factor=factor))
@@ -369,7 +400,8 @@ def main():
     args = parse_args()
     results_dir = args.results_dir
     output_dir = args.output_dir or results_dir / "plots"
-    specs = build_specs(args.datasets, args.frames, args.factors)
+    dataset_frames = {dataset: frames_for_dataset(args, dataset) for dataset in args.datasets}
+    specs = build_specs(args.datasets, dataset_frames, args.factors)
     missing = missing_files(specs, results_dir)
     if missing and not args.allow_missing:
         print_missing(missing)
@@ -380,7 +412,7 @@ def main():
 
     plot_files = []
     for dataset in args.datasets:
-        for frame_count in args.frames:
+        for frame_count in dataset_frames[dataset]:
             plot_files.extend(plot_group(rows, dataset, frame_count, output_dir))
 
     index_path = write_index(plot_files, summary_path, output_dir)

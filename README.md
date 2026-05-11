@@ -34,14 +34,23 @@ matrix in one process. This is much faster than launching one command per
 configuration.
 
 ```bash
-uv run python eval_batch.py --frames 20 100 200 --factors 1 2 4 6 9
+uv run python eval_batch.py --skip-existing
+```
+
+By default, the batch runner evaluates:
+
+```text
+7-Scenes:       frames 5, 10, 20
+RealEstate10K:  frames 5, 10, 20, 60
+AVGGT factors:  1, 2, 4, 6, 9
 ```
 
 Useful options:
 
 ```bash
-uv run python eval_batch.py --datasets 7scenes --frames 20 --factors 1 2 4 6 9
-uv run python eval_batch.py --frames 20 100 200 --factors 1 2 4 6 9 --skip-existing
+uv run python eval_batch.py --datasets 7scenes --7scenes-frames 5 10 20 --skip-existing
+uv run python eval_batch.py --datasets re10k --re10k-frames 5 10 20 60 --skip-existing
+uv run python eval_batch.py --frames 20 --factors 1 2 4 6 9 --skip-existing
 uv run python eval_batch.py --frames 20 --factors 4 --warmup-samples 1
 ```
 
@@ -52,18 +61,32 @@ subsampling factor.
 After the batch run finishes, generate plots with:
 
 ```bash
-uv run python plot_results.py --frames 20 100 200 --factors 1 2 4 6 9
+uv run python plot_results.py
 ```
 
 Important: `--frames` cannot exceed the number of frames available in each
-prepared RealEstate10K scene or 7-Scenes window. The small prepared manifests in
-this repository may only support `--frames 20`; `--frames 100` and
-`--frames 200` require larger prepared manifests/windows.
+prepared RealEstate10K scene or 7-Scenes window. The prepared manifests in this
+repository support 7-Scenes up to 20 frames per window and RealEstate10K up to
+60 frames per scene.
 
 The commands below are equivalent single-run commands. Use them only when you
 need to rerun one configuration manually.
 
 ### 1. Baseline VGGT
+
+Frames 5:
+
+```bash
+uv run python eval_re10k.py --profile --frames 5
+uv run python eval_7scenes.py --profile --frames 5
+```
+
+Frames 10:
+
+```bash
+uv run python eval_re10k.py --profile --frames 10
+uv run python eval_7scenes.py --profile --frames 10
+```
 
 Frames 20:
 
@@ -72,21 +95,27 @@ uv run python eval_re10k.py --profile --frames 20
 uv run python eval_7scenes.py --profile --frames 20
 ```
 
-Frames 100:
+RealEstate10K frames 60:
 
 ```bash
-uv run python eval_re10k.py --profile --frames 100
-uv run python eval_7scenes.py --profile --frames 100
-```
-
-Frames 200:
-
-```bash
-uv run python eval_re10k.py --profile --frames 200
-uv run python eval_7scenes.py --profile --frames 200
+uv run python eval_re10k.py --profile --frames 60
 ```
 
 ### 2. AVGGT Factor 1
+
+Frames 5:
+
+```bash
+uv run python eval_re10k.py --profile --frames 5 --avggt --subsample-factor 1
+uv run python eval_7scenes.py --profile --frames 5 --avggt --subsample-factor 1
+```
+
+Frames 10:
+
+```bash
+uv run python eval_re10k.py --profile --frames 10 --avggt --subsample-factor 1
+uv run python eval_7scenes.py --profile --frames 10 --avggt --subsample-factor 1
+```
 
 Frames 20:
 
@@ -95,21 +124,27 @@ uv run python eval_re10k.py --profile --frames 20 --avggt --subsample-factor 1
 uv run python eval_7scenes.py --profile --frames 20 --avggt --subsample-factor 1
 ```
 
-Frames 100:
+RealEstate10K frames 60:
 
 ```bash
-uv run python eval_re10k.py --profile --frames 100 --avggt --subsample-factor 1
-uv run python eval_7scenes.py --profile --frames 100 --avggt --subsample-factor 1
-```
-
-Frames 200:
-
-```bash
-uv run python eval_re10k.py --profile --frames 200 --avggt --subsample-factor 1
-uv run python eval_7scenes.py --profile --frames 200 --avggt --subsample-factor 1
+uv run python eval_re10k.py --profile --frames 60 --avggt --subsample-factor 1
 ```
 
 ### 3. AVGGT Factor 2
+
+Frames 5:
+
+```bash
+uv run python eval_re10k.py --profile --frames 5 --avggt --subsample-factor 2
+uv run python eval_7scenes.py --profile --frames 5 --avggt --subsample-factor 2
+```
+
+Frames 10:
+
+```bash
+uv run python eval_re10k.py --profile --frames 10 --avggt --subsample-factor 2
+uv run python eval_7scenes.py --profile --frames 10 --avggt --subsample-factor 2
+```
 
 Frames 20:
 
@@ -118,21 +153,27 @@ uv run python eval_re10k.py --profile --frames 20 --avggt --subsample-factor 2
 uv run python eval_7scenes.py --profile --frames 20 --avggt --subsample-factor 2
 ```
 
-Frames 100:
+RealEstate10K frames 60:
 
 ```bash
-uv run python eval_re10k.py --profile --frames 100 --avggt --subsample-factor 2
-uv run python eval_7scenes.py --profile --frames 100 --avggt --subsample-factor 2
-```
-
-Frames 200:
-
-```bash
-uv run python eval_re10k.py --profile --frames 200 --avggt --subsample-factor 2
-uv run python eval_7scenes.py --profile --frames 200 --avggt --subsample-factor 2
+uv run python eval_re10k.py --profile --frames 60 --avggt --subsample-factor 2
 ```
 
 ### 4. AVGGT Factor 4
+
+Frames 5:
+
+```bash
+uv run python eval_re10k.py --profile --frames 5 --avggt --subsample-factor 4
+uv run python eval_7scenes.py --profile --frames 5 --avggt --subsample-factor 4
+```
+
+Frames 10:
+
+```bash
+uv run python eval_re10k.py --profile --frames 10 --avggt --subsample-factor 4
+uv run python eval_7scenes.py --profile --frames 10 --avggt --subsample-factor 4
+```
 
 Frames 20:
 
@@ -141,21 +182,27 @@ uv run python eval_re10k.py --profile --frames 20 --avggt --subsample-factor 4
 uv run python eval_7scenes.py --profile --frames 20 --avggt --subsample-factor 4
 ```
 
-Frames 100:
+RealEstate10K frames 60:
 
 ```bash
-uv run python eval_re10k.py --profile --frames 100 --avggt --subsample-factor 4
-uv run python eval_7scenes.py --profile --frames 100 --avggt --subsample-factor 4
-```
-
-Frames 200:
-
-```bash
-uv run python eval_re10k.py --profile --frames 200 --avggt --subsample-factor 4
-uv run python eval_7scenes.py --profile --frames 200 --avggt --subsample-factor 4
+uv run python eval_re10k.py --profile --frames 60 --avggt --subsample-factor 4
 ```
 
 ### 5. AVGGT Factor 6
+
+Frames 5:
+
+```bash
+uv run python eval_re10k.py --profile --frames 5 --avggt --subsample-factor 6
+uv run python eval_7scenes.py --profile --frames 5 --avggt --subsample-factor 6
+```
+
+Frames 10:
+
+```bash
+uv run python eval_re10k.py --profile --frames 10 --avggt --subsample-factor 6
+uv run python eval_7scenes.py --profile --frames 10 --avggt --subsample-factor 6
+```
 
 Frames 20:
 
@@ -164,21 +211,27 @@ uv run python eval_re10k.py --profile --frames 20 --avggt --subsample-factor 6
 uv run python eval_7scenes.py --profile --frames 20 --avggt --subsample-factor 6
 ```
 
-Frames 100:
+RealEstate10K frames 60:
 
 ```bash
-uv run python eval_re10k.py --profile --frames 100 --avggt --subsample-factor 6
-uv run python eval_7scenes.py --profile --frames 100 --avggt --subsample-factor 6
-```
-
-Frames 200:
-
-```bash
-uv run python eval_re10k.py --profile --frames 200 --avggt --subsample-factor 6
-uv run python eval_7scenes.py --profile --frames 200 --avggt --subsample-factor 6
+uv run python eval_re10k.py --profile --frames 60 --avggt --subsample-factor 6
 ```
 
 ### 6. AVGGT Factor 9
+
+Frames 5:
+
+```bash
+uv run python eval_re10k.py --profile --frames 5 --avggt --subsample-factor 9
+uv run python eval_7scenes.py --profile --frames 5 --avggt --subsample-factor 9
+```
+
+Frames 10:
+
+```bash
+uv run python eval_re10k.py --profile --frames 10 --avggt --subsample-factor 9
+uv run python eval_7scenes.py --profile --frames 10 --avggt --subsample-factor 9
+```
 
 Frames 20:
 
@@ -187,18 +240,10 @@ uv run python eval_re10k.py --profile --frames 20 --avggt --subsample-factor 9
 uv run python eval_7scenes.py --profile --frames 20 --avggt --subsample-factor 9
 ```
 
-Frames 100:
+RealEstate10K frames 60:
 
 ```bash
-uv run python eval_re10k.py --profile --frames 100 --avggt --subsample-factor 9
-uv run python eval_7scenes.py --profile --frames 100 --avggt --subsample-factor 9
-```
-
-Frames 200:
-
-```bash
-uv run python eval_re10k.py --profile --frames 200 --avggt --subsample-factor 9
-uv run python eval_7scenes.py --profile --frames 200 --avggt --subsample-factor 9
+uv run python eval_re10k.py --profile --frames 60 --avggt --subsample-factor 9
 ```
 
 Results are written under `results/`.
@@ -256,7 +301,7 @@ uv run python plot_results.py
 Plot the full experiment grid listed above:
 
 ```bash
-uv run python plot_results.py --frames 20 100 200 --factors 1 2 4 6 9
+uv run python plot_results.py
 ```
 
 If files are missing, the script prints the exact eval commands needed to
