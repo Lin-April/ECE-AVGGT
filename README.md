@@ -61,3 +61,16 @@ closer to the paper but can use much more memory.
 
 Use `--frames` to choose how many frames are evaluated per RealEstate10K scene or
 7-Scenes window. Non-default frame counts add an `_fN` suffix to result files.
+
+## Plot Results
+
+Generate interactive Plotly charts from the default `results/` directory:
+
+```bash
+uv run python plot_results.py
+```
+
+By default this expects baseline plus AVGGT factors `2`, `4`, `6`, and `9` for
+both datasets at `--frames 20`. If files are missing, the script prints the exact
+eval commands needed to generate them. Plots and `summary.csv` are written to
+`results/plots/`.
