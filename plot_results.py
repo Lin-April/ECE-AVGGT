@@ -116,6 +116,15 @@ def print_missing(missing):
         for path in paths:
             print(f"  missing: {path}", file=sys.stderr)
         print(f"  generate with: {spec.command()}\n", file=sys.stderr)
+
+    commands = list(dict.fromkeys(spec.command() for spec, _ in missing))
+    print("Copy and run all missing experiments:", file=sys.stderr)
+    print("", file=sys.stderr)
+    print("```bash", file=sys.stderr)
+    for command in commands:
+        print(command, file=sys.stderr)
+    print("```", file=sys.stderr)
+    print("", file=sys.stderr)
     print("After generating the missing files, rerun:", file=sys.stderr)
     print("  uv run python plot_results.py", file=sys.stderr)
     print("Or pass --allow-missing to plot only complete available runs.", file=sys.stderr)
