@@ -216,6 +216,7 @@ def write_summary(rows, output_dir):
         "method",
         "factor",
         "label",
+        "order",
         "auc30",
         "auc15",
         "auc5",
