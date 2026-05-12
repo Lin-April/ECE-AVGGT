@@ -1,0 +1,1217 @@
+{
+  "model": "VGGT",
+  "use_avggt": true,
+  "subsample_factor": 1,
+  "tearly": 9,
+  "preserve_diagonal": false,
+  "frames_per_scene": 20,
+  "sample_mode": "uniform",
+  "device": "cuda",
+  "dtype": "torch.bfloat16",
+  "num_samples": 300,
+  "total_inference_seconds": 257.387905289419,
+  "mean_inference_seconds": 0.8579596842980634,
+  "median_inference_seconds": 0.8456481220200658,
+  "samples": {
+    "000c3ab189999a83": {
+      "num_frames": 20,
+      "inference_seconds": 0.8327116295695305
+    },
+    "000db54a47bd43fe": {
+      "num_frames": 20,
+      "inference_seconds": 0.846848975867033
+    },
+    "0017ce4c6a39d122": {
+      "num_frames": 20,
+      "inference_seconds": 0.8300354825332761
+    },
+    "002ae53df0e0afe2": {
+      "num_frames": 20,
+      "inference_seconds": 0.8732927208766341
+    },
+    "004334c94bbc8bd5": {
+      "num_frames": 20,
+      "inference_seconds": 0.9048553928732872
+    },
+    "0043978734eec081": {
+      "num_frames": 20,
+      "inference_seconds": 0.8457323228940368
+    },
+    "004dd4b46a06e5be": {
+      "num_frames": 20,
+      "inference_seconds": 0.894672928377986
+    },
+    "004e9db3337e8206": {
+      "num_frames": 20,
+      "inference_seconds": 0.8559474088251591
+    },
+    "005dd9a58df1ba3c": {
+      "num_frames": 20,
+      "inference_seconds": 0.9029931565746665
+    },
+    "00620c2b77518524": {
+      "num_frames": 20,
+      "inference_seconds": 0.8310165591537952
+    },
+    "0068e97c1c1f61aa": {
+      "num_frames": 20,
+      "inference_seconds": 0.8301580138504505
+    },
+    "007876f71baf453f": {
+      "num_frames": 20,
+      "inference_seconds": 0.8309741588309407
+    },
+    "007b4ae7c05f2ea2": {
+      "num_frames": 20,
+      "inference_seconds": 0.8338073305785656
+    },
+    "008cd8c450342e49": {
+      "num_frames": 20,
+      "inference_seconds": 0.8308756332844496
+    },
+    "0090cc64d7b7bb24": {
+      "num_frames": 20,
+      "inference_seconds": 0.8717050133273005
+    },
+    "00969c45a093d43c": {
+      "num_frames": 20,
+      "inference_seconds": 0.8433349216356874
+    },
+    "00a54225c5cb1913": {
+      "num_frames": 20,
+      "inference_seconds": 0.8836024524644017
+    },
+    "00a5a2af678f37d5": {
+      "num_frames": 20,
+      "inference_seconds": 0.9078982686623931
+    },
+    "00beb03ef95dc637": {
+      "num_frames": 20,
+      "inference_seconds": 0.8314857007935643
+    },
+    "00ca5123d8ff6f83": {
+      "num_frames": 20,
+      "inference_seconds": 0.8798604514449835
+    },
+    "00cf0a94235771bb": {
+      "num_frames": 20,
+      "inference_seconds": 0.8806776497513056
+    },
+    "00cfc0ecd345deb4": {
+      "num_frames": 20,
+      "inference_seconds": 0.8304691389203072
+    },
+    "00d83c48cb78ec83": {
+      "num_frames": 20,
+      "inference_seconds": 0.8647670755162835
+    },
+    "00e12e215c028984": {
+      "num_frames": 20,
+      "inference_seconds": 0.8311781631782651
+    },
+    "00e8df74b6805da7": {
+      "num_frames": 20,
+      "inference_seconds": 0.872044513002038
+    },
+    "0122933cf8ab3317": {
+      "num_frames": 20,
+      "inference_seconds": 0.8741068625822663
+    },
+    "0131c9aed0fb3940": {
+      "num_frames": 20,
+      "inference_seconds": 0.8288997747004032
+    },
+    "0134d6a876481ed8": {
+      "num_frames": 20,
+      "inference_seconds": 0.832795137539506
+    },
+    "0145c694b53b120d": {
+      "num_frames": 20,
+      "inference_seconds": 0.8293654611334205
+    },
+    "01497290d8b93a9b": {
+      "num_frames": 20,
+      "inference_seconds": 0.8427082514390349
+    },
+    "015631b21f792a12": {
+      "num_frames": 20,
+      "inference_seconds": 0.8304027542471886
+    },
+    "01570ac1c73e9ca2": {
+      "num_frames": 20,
+      "inference_seconds": 0.9196937885135412
+    },
+    "015d8a2a2834d38c": {
+      "num_frames": 20,
+      "inference_seconds": 0.830190665088594
+    },
+    "0181b66a65650830": {
+      "num_frames": 20,
+      "inference_seconds": 0.8299534684047103
+    },
+    "0181d3b41c2cf87c": {
+      "num_frames": 20,
+      "inference_seconds": 0.8388415658846498
+    },
+    "01842c6b21e1d679": {
+      "num_frames": 20,
+      "inference_seconds": 0.836651804856956
+    },
+    "01866b81c3b90f2c": {
+      "num_frames": 20,
+      "inference_seconds": 0.829032875597477
+    },
+    "018f7907401f2fef": {
+      "num_frames": 20,
+      "inference_seconds": 0.9003251567482948
+    },
+    "0190fe72a727c853": {
+      "num_frames": 20,
+      "inference_seconds": 0.8315735459327698
+    },
+    "0196dedebec3dad2": {
+      "num_frames": 20,
+      "inference_seconds": 0.8936410956084728
+    },
+    "01a2277ee817b310": {
+      "num_frames": 20,
+      "inference_seconds": 0.8292603045701981
+    },
+    "01a5cc3805e94c21": {
+      "num_frames": 20,
+      "inference_seconds": 0.8686711238697171
+    },
+    "01a628e2c509b823": {
+      "num_frames": 20,
+      "inference_seconds": 0.8700980385765433
+    },
+    "01aaf4ebb084dc16": {
+      "num_frames": 20,
+      "inference_seconds": 0.8688422553241253
+    },
+    "01b08e2f20321127": {
+      "num_frames": 20,
+      "inference_seconds": 0.9737753476947546
+    },
+    "01be77405b16df11": {
+      "num_frames": 20,
+      "inference_seconds": 0.8846949599683285
+    },
+    "01cefee9563f691a": {
+      "num_frames": 20,
+      "inference_seconds": 0.8821240328252316
+    },
+    "01cf2d900cb03afb": {
+      "num_frames": 20,
+      "inference_seconds": 0.843212591484189
+    },
+    "01cf55ae3e378faf": {
+      "num_frames": 20,
+      "inference_seconds": 0.8305910071358085
+    },
+    "01e18dbbf22ff263": {
+      "num_frames": 20,
+      "inference_seconds": 0.8356048129498959
+    },
+    "01eca393f86d37c5": {
+      "num_frames": 20,
+      "inference_seconds": 0.8314409162849188
+    },
+    "01f7915dce639515": {
+      "num_frames": 20,
+      "inference_seconds": 0.8298324095085263
+    },
+    "01fa6190cd47d125": {
+      "num_frames": 20,
+      "inference_seconds": 0.8296513389796019
+    },
+    "01fe225e2f261d1a": {
+      "num_frames": 20,
+      "inference_seconds": 0.8310292037203908
+    },
+    "020991bdfbdbe504": {
+      "num_frames": 20,
+      "inference_seconds": 0.8311624331399798
+    },
+    "020a41f988981396": {
+      "num_frames": 20,
+      "inference_seconds": 0.8798605119809508
+    },
+    "021575237abe0684": {
+      "num_frames": 20,
+      "inference_seconds": 0.8751087095588446
+    },
+    "0223924f43297881": {
+      "num_frames": 20,
+      "inference_seconds": 0.828019798733294
+    },
+    "022a21a897f2a904": {
+      "num_frames": 20,
+      "inference_seconds": 0.8525596931576729
+    },
+    "024152256b6bcac7": {
+      "num_frames": 20,
+      "inference_seconds": 0.9204665217548609
+    },
+    "024908906fadb408": {
+      "num_frames": 20,
+      "inference_seconds": 0.8634091215208173
+    },
+    "025192166c704a39": {
+      "num_frames": 20,
+      "inference_seconds": 0.8444821508601308
+    },
+    "025ce727b1b55932": {
+      "num_frames": 20,
+      "inference_seconds": 0.8303126730024815
+    },
+    "02679535c5f06a19": {
+      "num_frames": 20,
+      "inference_seconds": 0.8302273126319051
+    },
+    "0277b87a9c943ed5": {
+      "num_frames": 20,
+      "inference_seconds": 0.8752290373668075
+    },
+    "0278b3d8abd9654d": {
+      "num_frames": 20,
+      "inference_seconds": 0.842605659738183
+    },
+    "027c8c3fc3e7d056": {
+      "num_frames": 20,
+      "inference_seconds": 0.8446257701143622
+    },
+    "0282160b901229a7": {
+      "num_frames": 20,
+      "inference_seconds": 0.8298174822703004
+    },
+    "0286d2ed56e8f107": {
+      "num_frames": 20,
+      "inference_seconds": 0.830788429826498
+    },
+    "02b2358ff02d3ce8": {
+      "num_frames": 20,
+      "inference_seconds": 0.8326948471367359
+    },
+    "02b406d1e5e31d5c": {
+      "num_frames": 20,
+      "inference_seconds": 0.9133171672001481
+    },
+    "02b59cd60efb924e": {
+      "num_frames": 20,
+      "inference_seconds": 0.8456363929435611
+    },
+    "02b618a34bc12ff9": {
+      "num_frames": 20,
+      "inference_seconds": 0.8615270992740989
+    },
+    "02c0c9192fb9a6a1": {
+      "num_frames": 20,
+      "inference_seconds": 0.9431008500978351
+    },
+    "02c485bd207116d4": {
+      "num_frames": 20,
+      "inference_seconds": 0.8298484301194549
+    },
+    "02cb3a4fd80ee0cc": {
+      "num_frames": 20,
+      "inference_seconds": 0.8389855874702334
+    },
+    "02e6fb86b0172f0b": {
+      "num_frames": 20,
+      "inference_seconds": 0.842980825342238
+    },
+    "02ee66b3efbf3b0a": {
+      "num_frames": 20,
+      "inference_seconds": 0.8389726206660271
+    },
+    "02f801e372d67cfd": {
+      "num_frames": 20,
+      "inference_seconds": 0.874372853897512
+    },
+    "0302fcf06bfba582": {
+      "num_frames": 20,
+      "inference_seconds": 0.8956881798803806
+    },
+    "0326e5c562bdf1b5": {
+      "num_frames": 20,
+      "inference_seconds": 0.8600056665018201
+    },
+    "034677cf3d80162d": {
+      "num_frames": 20,
+      "inference_seconds": 0.8794335285201669
+    },
+    "03482c3bd66de195": {
+      "num_frames": 20,
+      "inference_seconds": 0.8308581197634339
+    },
+    "0362399a61c18ad5": {
+      "num_frames": 20,
+      "inference_seconds": 0.8303899886086583
+    },
+    "0368abd976e8d82e": {
+      "num_frames": 20,
+      "inference_seconds": 0.8857786506414413
+    },
+    "036f135766f38f78": {
+      "num_frames": 20,
+      "inference_seconds": 0.8390151625499129
+    },
+    "037e8191b3985142": {
+      "num_frames": 20,
+      "inference_seconds": 0.9037410952150822
+    },
+    "038137c9569c60eb": {
+      "num_frames": 20,
+      "inference_seconds": 0.8301586844027042
+    },
+    "0387ef3895b1393c": {
+      "num_frames": 20,
+      "inference_seconds": 0.861304079182446
+    },
+    "03906f66d3bca71a": {
+      "num_frames": 20,
+      "inference_seconds": 0.8296802937984467
+    },
+    "039b153af4fbfba7": {
+      "num_frames": 20,
+      "inference_seconds": 0.8335074158385396
+    },
+    "039cc34e9cdbcf8f": {
+      "num_frames": 20,
+      "inference_seconds": 0.8450332079082727
+    },
+    "03a78406de1d0993": {
+      "num_frames": 20,
+      "inference_seconds": 0.9058028450235724
+    },
+    "03aa0437e5d62d58": {
+      "num_frames": 20,
+      "inference_seconds": 0.8638417050242424
+    },
+    "03b3f603a1001de0": {
+      "num_frames": 20,
+      "inference_seconds": 0.857223859988153
+    },
+    "03b440db4696d8e7": {
+      "num_frames": 20,
+      "inference_seconds": 0.8807783583179116
+    },
+    "03bcb03930ff1ace": {
+      "num_frames": 20,
+      "inference_seconds": 0.8775405250489712
+    },
+    "03c61595d13e121c": {
+      "num_frames": 20,
+      "inference_seconds": 0.8457505665719509
+    },
+    "03cf40616d79cb6a": {
+      "num_frames": 20,
+      "inference_seconds": 0.8377583678811789
+    },
+    "03de2844d3c8314e": {
+      "num_frames": 20,
+      "inference_seconds": 0.8295548679307103
+    },
+    "03e141d7afac53e4": {
+      "num_frames": 20,
+      "inference_seconds": 0.8823807956650853
+    },
+    "03e756bff92d49dd": {
+      "num_frames": 20,
+      "inference_seconds": 0.8571786349639297
+    },
+    "03ef5f13e0a30864": {
+      "num_frames": 20,
+      "inference_seconds": 0.9202079167589545
+    },
+    "03f1781c4cc126e6": {
+      "num_frames": 20,
+      "inference_seconds": 0.830434693954885
+    },
+    "03f551fc4abedc08": {
+      "num_frames": 20,
+      "inference_seconds": 0.8813935266807675
+    },
+    "03fe94a439456692": {
+      "num_frames": 20,
+      "inference_seconds": 0.8460184819996357
+    },
+    "0404d32e97ec1cdb": {
+      "num_frames": 20,
+      "inference_seconds": 0.8383444305509329
+    },
+    "040895d45bf4e580": {
+      "num_frames": 20,
+      "inference_seconds": 0.8321796879172325
+    },
+    "040a26b288e7bda4": {
+      "num_frames": 20,
+      "inference_seconds": 0.8342672158032656
+    },
+    "040a7af97273204f": {
+      "num_frames": 20,
+      "inference_seconds": 0.828712853603065
+    },
+    "040de715f9303ba5": {
+      "num_frames": 20,
+      "inference_seconds": 0.8597510065883398
+    },
+    "04145b4b73b2d313": {
+      "num_frames": 20,
+      "inference_seconds": 0.8404658120125532
+    },
+    "0425df3e42ba0de3": {
+      "num_frames": 20,
+      "inference_seconds": 0.8603793680667877
+    },
+    "043c48135c5e8cc2": {
+      "num_frames": 20,
+      "inference_seconds": 0.8294345214962959
+    },
+    "04422a07336e32da": {
+      "num_frames": 20,
+      "inference_seconds": 0.8297178540378809
+    },
+    "04433dcf217ad9a0": {
+      "num_frames": 20,
+      "inference_seconds": 0.832271340303123
+    },
+    "0445459f7afb0f48": {
+      "num_frames": 20,
+      "inference_seconds": 0.8742786068469286
+    },
+    "0463d74358aca878": {
+      "num_frames": 20,
+      "inference_seconds": 0.8637719126418233
+    },
+    "047c29e9138af233": {
+      "num_frames": 20,
+      "inference_seconds": 0.9101959737017751
+    },
+    "0485a8528fa72698": {
+      "num_frames": 20,
+      "inference_seconds": 0.8804404344409704
+    },
+    "0498c9066256055c": {
+      "num_frames": 20,
+      "inference_seconds": 0.8691608449444175
+    },
+    "049a98f70ce9f471": {
+      "num_frames": 20,
+      "inference_seconds": 0.8812534529715776
+    },
+    "04b580ea1f4df0a5": {
+      "num_frames": 20,
+      "inference_seconds": 0.8304095268249512
+    },
+    "04c441c7ce273dcc": {
+      "num_frames": 20,
+      "inference_seconds": 0.8300437480211258
+    },
+    "04ca03945611febb": {
+      "num_frames": 20,
+      "inference_seconds": 0.8975455444306135
+    },
+    "04cb1526cf3c43cc": {
+      "num_frames": 20,
+      "inference_seconds": 0.8300685454159975
+    },
+    "04db26572a791881": {
+      "num_frames": 20,
+      "inference_seconds": 0.8316835835576057
+    },
+    "04e2be0415136fa9": {
+      "num_frames": 20,
+      "inference_seconds": 0.8771009296178818
+    },
+    "04e4c841b349bf5c": {
+      "num_frames": 20,
+      "inference_seconds": 0.9408433102071285
+    },
+    "04ec725465dc5329": {
+      "num_frames": 20,
+      "inference_seconds": 0.864626538939774
+    },
+    "04ef6a410f034514": {
+      "num_frames": 20,
+      "inference_seconds": 0.8460088083520532
+    },
+    "04f5153fc5255516": {
+      "num_frames": 20,
+      "inference_seconds": 0.8291275938972831
+    },
+    "04fe4ec70781a0e8": {
+      "num_frames": 20,
+      "inference_seconds": 0.8776734042912722
+    },
+    "0516a5d959b58cb3": {
+      "num_frames": 20,
+      "inference_seconds": 0.8287522774189711
+    },
+    "052430ff6e2c07c4": {
+      "num_frames": 20,
+      "inference_seconds": 0.8412649193778634
+    },
+    "0539bcecbc483dfe": {
+      "num_frames": 20,
+      "inference_seconds": 0.829261195845902
+    },
+    "053e78d3134437a5": {
+      "num_frames": 20,
+      "inference_seconds": 0.8392104422673583
+    },
+    "0542630de1d734de": {
+      "num_frames": 20,
+      "inference_seconds": 0.8469303520396352
+    },
+    "0553c19e8933374a": {
+      "num_frames": 20,
+      "inference_seconds": 0.8824733700603247
+    },
+    "0555b07fe6239b4a": {
+      "num_frames": 20,
+      "inference_seconds": 0.8375780610367656
+    },
+    "055e4612c1ea70f9": {
+      "num_frames": 20,
+      "inference_seconds": 0.8732345011085272
+    },
+    "0588138dfec165a1": {
+      "num_frames": 20,
+      "inference_seconds": 0.8896609153598547
+    },
+    "058c67085c217b96": {
+      "num_frames": 20,
+      "inference_seconds": 0.8461505947634578
+    },
+    "059058768c222bd6": {
+      "num_frames": 20,
+      "inference_seconds": 0.8597645182162523
+    },
+    "0598fec76ecc7bd6": {
+      "num_frames": 20,
+      "inference_seconds": 0.8882752377539873
+    },
+    "05a0ad1e2aa632e7": {
+      "num_frames": 20,
+      "inference_seconds": 0.8858840381726623
+    },
+    "05a6149f1fcee38d": {
+      "num_frames": 20,
+      "inference_seconds": 0.832639885134995
+    },
+    "05ac37966de4e7fb": {
+      "num_frames": 20,
+      "inference_seconds": 0.8372508529573679
+    },
+    "05b1462991e38e4d": {
+      "num_frames": 20,
+      "inference_seconds": 0.9099409366026521
+    },
+    "05b77cb7c0f79f0f": {
+      "num_frames": 20,
+      "inference_seconds": 0.9599369363859296
+    },
+    "05bacb6d6a4741b0": {
+      "num_frames": 20,
+      "inference_seconds": 0.8671670304611325
+    },
+    "05c423623c9f6f56": {
+      "num_frames": 20,
+      "inference_seconds": 0.8863171823322773
+    },
+    "05c48ff6535fbf55": {
+      "num_frames": 20,
+      "inference_seconds": 0.833047604188323
+    },
+    "05ce34e3cd48c449": {
+      "num_frames": 20,
+      "inference_seconds": 0.8299115607514977
+    },
+    "05ddd2fee689399c": {
+      "num_frames": 20,
+      "inference_seconds": 0.8383751502260566
+    },
+    "05ec2d3e4c027220": {
+      "num_frames": 20,
+      "inference_seconds": 0.8358886605128646
+    },
+    "05ef56b2656c9318": {
+      "num_frames": 20,
+      "inference_seconds": 0.8309801612049341
+    },
+    "06058474f164c53d": {
+      "num_frames": 20,
+      "inference_seconds": 0.8357104565948248
+    },
+    "061e49ba3a5386c7": {
+      "num_frames": 20,
+      "inference_seconds": 0.8783917268738151
+    },
+    "061f829d3dd2e46e": {
+      "num_frames": 20,
+      "inference_seconds": 0.9739714507013559
+    },
+    "063b857e6470addb": {
+      "num_frames": 20,
+      "inference_seconds": 0.8458662489429116
+    },
+    "0667d5bedfdbc555": {
+      "num_frames": 20,
+      "inference_seconds": 0.8293590201064944
+    },
+    "066c35b1abc706be": {
+      "num_frames": 20,
+      "inference_seconds": 0.8509376039728522
+    },
+    "068140e09ae5ae8f": {
+      "num_frames": 20,
+      "inference_seconds": 0.8529294924810529
+    },
+    "06954737f53b8688": {
+      "num_frames": 20,
+      "inference_seconds": 0.8899037949740887
+    },
+    "069597e1fe899530": {
+      "num_frames": 20,
+      "inference_seconds": 0.8918436653912067
+    },
+    "069a4c442912c405": {
+      "num_frames": 20,
+      "inference_seconds": 0.8498858446255326
+    },
+    "069a9416dc6a373b": {
+      "num_frames": 20,
+      "inference_seconds": 0.8685958702117205
+    },
+    "06a2911e9add96c6": {
+      "num_frames": 20,
+      "inference_seconds": 0.8461054908111691
+    },
+    "06a8196a66e125af": {
+      "num_frames": 20,
+      "inference_seconds": 0.8380267350003123
+    },
+    "06c71ce295284689": {
+      "num_frames": 20,
+      "inference_seconds": 0.8304543923586607
+    },
+    "06c7c747b4542273": {
+      "num_frames": 20,
+      "inference_seconds": 0.8305618464946747
+    },
+    "06ca8f480c91e9eb": {
+      "num_frames": 20,
+      "inference_seconds": 0.8303608251735568
+    },
+    "06d8995be6aa4db6": {
+      "num_frames": 20,
+      "inference_seconds": 0.8307924792170525
+    },
+    "06db5bb2465ae58e": {
+      "num_frames": 20,
+      "inference_seconds": 0.8574082823470235
+    },
+    "06dcbfe7cd79bb66": {
+      "num_frames": 20,
+      "inference_seconds": 0.8492117952555418
+    },
+    "06eba57d1c333a3c": {
+      "num_frames": 20,
+      "inference_seconds": 0.8437896920368075
+    },
+    "06f4bfa5f9d5fe0e": {
+      "num_frames": 20,
+      "inference_seconds": 0.8297232650220394
+    },
+    "0712476a67734dee": {
+      "num_frames": 20,
+      "inference_seconds": 0.9128771619871259
+    },
+    "0718f733a326d65f": {
+      "num_frames": 20,
+      "inference_seconds": 0.8699279762804508
+    },
+    "071e8c0978097efd": {
+      "num_frames": 20,
+      "inference_seconds": 0.85297732334584
+    },
+    "0720bead0cc7cbbf": {
+      "num_frames": 20,
+      "inference_seconds": 0.8443363001570106
+    },
+    "07225d96742d2a6c": {
+      "num_frames": 20,
+      "inference_seconds": 0.831989430822432
+    },
+    "072a60bc7e0b0dfd": {
+      "num_frames": 20,
+      "inference_seconds": 0.8456113887950778
+    },
+    "072b4bb46d80484e": {
+      "num_frames": 20,
+      "inference_seconds": 0.8605476524680853
+    },
+    "074653ff3928b9fe": {
+      "num_frames": 20,
+      "inference_seconds": 0.878775779157877
+    },
+    "07479835711d6f8d": {
+      "num_frames": 20,
+      "inference_seconds": 0.8333569560199976
+    },
+    "075278a4d0af74f7": {
+      "num_frames": 20,
+      "inference_seconds": 0.8308887090533972
+    },
+    "0752baf20fbc2285": {
+      "num_frames": 20,
+      "inference_seconds": 0.8913251683115959
+    },
+    "07559b44fa10672c": {
+      "num_frames": 20,
+      "inference_seconds": 0.83140301797539
+    },
+    "075654f497170f90": {
+      "num_frames": 20,
+      "inference_seconds": 0.8450870830565691
+    },
+    "0757b4bc82bf26b1": {
+      "num_frames": 20,
+      "inference_seconds": 0.8307081405073404
+    },
+    "075f0d808a621ae2": {
+      "num_frames": 20,
+      "inference_seconds": 0.8362500807270408
+    },
+    "077d42bb51ee2793": {
+      "num_frames": 20,
+      "inference_seconds": 0.8738384069874883
+    },
+    "07842cc567e9beec": {
+      "num_frames": 20,
+      "inference_seconds": 0.830313928425312
+    },
+    "078b8bdc29565cac": {
+      "num_frames": 20,
+      "inference_seconds": 0.8298774370923638
+    },
+    "07b667b34838336d": {
+      "num_frames": 20,
+      "inference_seconds": 0.8767628110945225
+    },
+    "07ba5489b56b7d62": {
+      "num_frames": 20,
+      "inference_seconds": 0.893001732416451
+    },
+    "07d0229847bd7408": {
+      "num_frames": 20,
+      "inference_seconds": 0.841192121617496
+    },
+    "07d1d5769e8d797c": {
+      "num_frames": 20,
+      "inference_seconds": 0.8407441796734929
+    },
+    "07d449efdb66c20d": {
+      "num_frames": 20,
+      "inference_seconds": 0.8476401371881366
+    },
+    "07e8ffa32746c7ce": {
+      "num_frames": 20,
+      "inference_seconds": 0.8646587589755654
+    },
+    "08072d6cc8e8711d": {
+      "num_frames": 20,
+      "inference_seconds": 0.841605450026691
+    },
+    "0807e84457d5ef58": {
+      "num_frames": 20,
+      "inference_seconds": 0.8863685512915254
+    },
+    "08138c1a3ba1ce8d": {
+      "num_frames": 20,
+      "inference_seconds": 0.8463350823149085
+    },
+    "082087c82daa295d": {
+      "num_frames": 20,
+      "inference_seconds": 0.8412053985521197
+    },
+    "08291107fc9e9849": {
+      "num_frames": 20,
+      "inference_seconds": 0.8849569726735353
+    },
+    "084fe29cd9d008db": {
+      "num_frames": 20,
+      "inference_seconds": 0.8379860669374466
+    },
+    "0869b66f912b845d": {
+      "num_frames": 20,
+      "inference_seconds": 0.8409367222338915
+    },
+    "08718fb99eaafea7": {
+      "num_frames": 20,
+      "inference_seconds": 0.849928354844451
+    },
+    "0871e2540b0a6804": {
+      "num_frames": 20,
+      "inference_seconds": 0.9409360829740763
+    },
+    "0872031bf89a808a": {
+      "num_frames": 20,
+      "inference_seconds": 0.8299806201830506
+    },
+    "08868143749f321b": {
+      "num_frames": 20,
+      "inference_seconds": 0.8951294999569654
+    },
+    "088b93f15ca8745d": {
+      "num_frames": 20,
+      "inference_seconds": 0.8976915311068296
+    },
+    "088e115752ce9e56": {
+      "num_frames": 20,
+      "inference_seconds": 0.8391161039471626
+    },
+    "0894f0072a8c5fd0": {
+      "num_frames": 20,
+      "inference_seconds": 0.8929726202040911
+    },
+    "0896b4819e39caf2": {
+      "num_frames": 20,
+      "inference_seconds": 0.833904767408967
+    },
+    "08c87b4b6b23895f": {
+      "num_frames": 20,
+      "inference_seconds": 0.852062433026731
+    },
+    "08c9e7365f0707a4": {
+      "num_frames": 20,
+      "inference_seconds": 0.8667055210098624
+    },
+    "08d5cde674e47324": {
+      "num_frames": 20,
+      "inference_seconds": 0.9049681583419442
+    },
+    "08f82d3899d6b726": {
+      "num_frames": 20,
+      "inference_seconds": 0.8808256676420569
+    },
+    "090c672e7e394397": {
+      "num_frames": 20,
+      "inference_seconds": 0.8311761608347297
+    },
+    "0915a60e1ae6a826": {
+      "num_frames": 20,
+      "inference_seconds": 0.8285429542884231
+    },
+    "09265a9e57075e7c": {
+      "num_frames": 20,
+      "inference_seconds": 0.9416981069371104
+    },
+    "094fd37f09dc318c": {
+      "num_frames": 20,
+      "inference_seconds": 0.8307519229128957
+    },
+    "0951fdaf9d399411": {
+      "num_frames": 20,
+      "inference_seconds": 0.8944671228528023
+    },
+    "095441304a817fe9": {
+      "num_frames": 20,
+      "inference_seconds": 0.8300066394731402
+    },
+    "0954f5a326941fb1": {
+      "num_frames": 20,
+      "inference_seconds": 0.8691643495112658
+    },
+    "095fb57435b7d890": {
+      "num_frames": 20,
+      "inference_seconds": 0.84323173109442
+    },
+    "0972074fece891f2": {
+      "num_frames": 20,
+      "inference_seconds": 0.8311808696016669
+    },
+    "09754b77eeea6dae": {
+      "num_frames": 20,
+      "inference_seconds": 0.8307357914745808
+    },
+    "098263de57257005": {
+      "num_frames": 20,
+      "inference_seconds": 0.85550257563591
+    },
+    "0992802044bf665d": {
+      "num_frames": 20,
+      "inference_seconds": 0.9338011248037219
+    },
+    "09c1b7a0876c08df": {
+      "num_frames": 20,
+      "inference_seconds": 0.8293027337640524
+    },
+    "09d860b12f6604cb": {
+      "num_frames": 20,
+      "inference_seconds": 0.8517248872667551
+    },
+    "09e4d5e8eef7b9c1": {
+      "num_frames": 20,
+      "inference_seconds": 0.9085363131016493
+    },
+    "0a0027a48d9ff2ae": {
+      "num_frames": 20,
+      "inference_seconds": 0.9125757478177547
+    },
+    "0a10d55239d83d99": {
+      "num_frames": 20,
+      "inference_seconds": 0.8693707762286067
+    },
+    "0a3b5fb184936a83": {
+      "num_frames": 20,
+      "inference_seconds": 0.8290834538638592
+    },
+    "0a45b99f42fb0ecb": {
+      "num_frames": 20,
+      "inference_seconds": 0.8458117768168449
+    },
+    "0a5eeb4466dd19bb": {
+      "num_frames": 20,
+      "inference_seconds": 0.8362986147403717
+    },
+    "0a6680fe6e8e09d7": {
+      "num_frames": 20,
+      "inference_seconds": 0.889118380844593
+    },
+    "0a6c499522efa0d5": {
+      "num_frames": 20,
+      "inference_seconds": 0.9059786926954985
+    },
+    "0a72a3fd46a88ef6": {
+      "num_frames": 20,
+      "inference_seconds": 0.8321839384734631
+    },
+    "0a78dcb828c506f1": {
+      "num_frames": 20,
+      "inference_seconds": 0.8303822176530957
+    },
+    "0a7c052273895bb3": {
+      "num_frames": 20,
+      "inference_seconds": 0.8679509125649929
+    },
+    "0a8f10a9a68236f7": {
+      "num_frames": 20,
+      "inference_seconds": 0.8312740381807089
+    },
+    "0a9f2831a3e73de8": {
+      "num_frames": 20,
+      "inference_seconds": 0.8456598510965705
+    },
+    "0aa284f8166e19e4": {
+      "num_frames": 20,
+      "inference_seconds": 0.8536283997818828
+    },
+    "0aa49c0b75e51ba4": {
+      "num_frames": 20,
+      "inference_seconds": 0.8296393407508731
+    },
+    "0aa8646901d156e4": {
+      "num_frames": 20,
+      "inference_seconds": 0.8302038628607988
+    },
+    "0aacb1732fee7a3c": {
+      "num_frames": 20,
+      "inference_seconds": 0.8825489785522223
+    },
+    "0ab14ffa7e541b0b": {
+      "num_frames": 20,
+      "inference_seconds": 0.8662915518507361
+    },
+    "0ac6adb37a92f549": {
+      "num_frames": 20,
+      "inference_seconds": 0.9175675539299846
+    },
+    "0af60a9ffd747a1c": {
+      "num_frames": 20,
+      "inference_seconds": 0.9337851945310831
+    },
+    "0afdc571e4667a44": {
+      "num_frames": 20,
+      "inference_seconds": 0.8390533179044724
+    },
+    "0b04644621e97d30": {
+      "num_frames": 20,
+      "inference_seconds": 0.8616235451772809
+    },
+    "0b07051f912592d7": {
+      "num_frames": 20,
+      "inference_seconds": 0.8852718025445938
+    },
+    "0b1b293ffb0e2f51": {
+      "num_frames": 20,
+      "inference_seconds": 0.8307393714785576
+    },
+    "0b1e61c69c98026b": {
+      "num_frames": 20,
+      "inference_seconds": 0.8300057090818882
+    },
+    "0b211a1457076450": {
+      "num_frames": 20,
+      "inference_seconds": 0.8348536258563399
+    },
+    "0b3674ffb90b641a": {
+      "num_frames": 20,
+      "inference_seconds": 0.8392697656527162
+    },
+    "0b429a4733089487": {
+      "num_frames": 20,
+      "inference_seconds": 0.8305828478187323
+    },
+    "0b4d5beb7d3bd867": {
+      "num_frames": 20,
+      "inference_seconds": 0.876228672452271
+    },
+    "0b530eea368f626e": {
+      "num_frames": 20,
+      "inference_seconds": 0.8411717861890793
+    },
+    "0b55abc1ca2fe909": {
+      "num_frames": 20,
+      "inference_seconds": 0.8389764530584216
+    },
+    "0b79ada01eb45be9": {
+      "num_frames": 20,
+      "inference_seconds": 0.8406887874007225
+    },
+    "0b970b3417969c89": {
+      "num_frames": 20,
+      "inference_seconds": 0.8733472004532814
+    },
+    "0ba1cadcb191dc0a": {
+      "num_frames": 20,
+      "inference_seconds": 0.9368239250034094
+    },
+    "0baa633d2094d2c1": {
+      "num_frames": 20,
+      "inference_seconds": 0.8870567521080375
+    },
+    "0bb7da710cbf4bb9": {
+      "num_frames": 20,
+      "inference_seconds": 0.8757122810930014
+    },
+    "0bb99505a71035cc": {
+      "num_frames": 20,
+      "inference_seconds": 0.8801164506003261
+    },
+    "0bc9fd5c8e50d0ee": {
+      "num_frames": 20,
+      "inference_seconds": 0.9078082973137498
+    },
+    "0bcde26e5a802638": {
+      "num_frames": 20,
+      "inference_seconds": 0.830072034150362
+    },
+    "0bcef9ed1c18f74d": {
+      "num_frames": 20,
+      "inference_seconds": 0.8411925425752997
+    },
+    "0bd7e6e9f0185aa3": {
+      "num_frames": 20,
+      "inference_seconds": 0.830006891861558
+    },
+    "0bd819cb30a432c6": {
+      "num_frames": 20,
+      "inference_seconds": 0.8415854228660464
+    },
+    "0be9a0dcbfe032f1": {
+      "num_frames": 20,
+      "inference_seconds": 0.842434661462903
+    },
+    "0beae06611ead92b": {
+      "num_frames": 20,
+      "inference_seconds": 0.8455359982326627
+    },
+    "0bf152ef84195293": {
+      "num_frames": 20,
+      "inference_seconds": 0.8846644889563322
+    },
+    "0c061512de79b744": {
+      "num_frames": 20,
+      "inference_seconds": 0.8425038112327456
+    },
+    "0c0f298ace7c875b": {
+      "num_frames": 20,
+      "inference_seconds": 0.8637319626286626
+    },
+    "0c1012a308ee2788": {
+      "num_frames": 20,
+      "inference_seconds": 0.8730220664292574
+    },
+    "0c11dbe781b1c11c": {
+      "num_frames": 20,
+      "inference_seconds": 0.8405100107192993
+    },
+    "0c209edeb7637dff": {
+      "num_frames": 20,
+      "inference_seconds": 0.8287896011024714
+    },
+    "0c24590c68af865f": {
+      "num_frames": 20,
+      "inference_seconds": 0.8666412876918912
+    },
+    "0c25287b812367cd": {
+      "num_frames": 20,
+      "inference_seconds": 0.8451997768133879
+    },
+    "0c2b3463c27c5ac3": {
+      "num_frames": 20,
+      "inference_seconds": 0.9052386917173862
+    },
+    "0c356641df7c72b8": {
+      "num_frames": 20,
+      "inference_seconds": 0.8775487169623375
+    },
+    "0c3d3b45ff4a4326": {
+      "num_frames": 20,
+      "inference_seconds": 0.8442636439576745
+    },
+    "0c4a239e265ae1c3": {
+      "num_frames": 20,
+      "inference_seconds": 0.8301552012562752
+    },
+    "0c52996355b23d76": {
+      "num_frames": 20,
+      "inference_seconds": 0.8326328340917826
+    },
+    "0c5ed899789e60ad": {
+      "num_frames": 20,
+      "inference_seconds": 0.8867234354838729
+    },
+    "0c609c435b1f7114": {
+      "num_frames": 20,
+      "inference_seconds": 0.8394485833123326
+    },
+    "0c6b149da098b121": {
+      "num_frames": 20,
+      "inference_seconds": 0.8378234347328544
+    },
+    "0c72eaf6bbb7c681": {
+      "num_frames": 20,
+      "inference_seconds": 0.8606482911854982
+    },
+    "0c788e368d993870": {
+      "num_frames": 20,
+      "inference_seconds": 0.9429961014539003
+    },
+    "0c824455996db331": {
+      "num_frames": 20,
+      "inference_seconds": 0.838885904289782
+    },
+    "0c8438d86bb28f7d": {
+      "num_frames": 20,
+      "inference_seconds": 0.8774315463379025
+    },
+    "0c884aee4b01366f": {
+      "num_frames": 20,
+      "inference_seconds": 0.8299938784912229
+    }
+  }
+}

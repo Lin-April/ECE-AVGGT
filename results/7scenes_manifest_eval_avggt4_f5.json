@@ -1,0 +1,638 @@
+{
+  "chess/window-00": {
+    "scene": "chess",
+    "window": "window-00",
+    "num_frames": 5,
+    "auc30": 0.3399999999999999,
+    "auc15": 0.13333333333333333,
+    "auc5": 0.06000000000000001,
+    "auc3": 0.03333333333333333
+  },
+  "chess/window-01": {
+    "scene": "chess",
+    "window": "window-01",
+    "num_frames": 5,
+    "auc30": 0.07333333333333332,
+    "auc15": 0.0,
+    "auc5": 0.0,
+    "auc3": 0.0
+  },
+  "chess/window-02": {
+    "scene": "chess",
+    "window": "window-02",
+    "num_frames": 5,
+    "auc30": 0.6399999999999998,
+    "auc15": 0.37999999999999995,
+    "auc5": 0.02,
+    "auc3": 0.0
+  },
+  "chess/window-03": {
+    "scene": "chess",
+    "window": "window-03",
+    "num_frames": 5,
+    "auc30": 0.04333333333333333,
+    "auc15": 0.0,
+    "auc5": 0.0,
+    "auc3": 0.0
+  },
+  "chess/window-04": {
+    "scene": "chess",
+    "window": "window-04",
+    "num_frames": 5,
+    "auc30": 0.74,
+    "auc15": 0.4799999999999999,
+    "auc5": 0.0,
+    "auc3": 0.0
+  },
+  "chess/window-05": {
+    "scene": "chess",
+    "window": "window-05",
+    "num_frames": 5,
+    "auc30": 0.2699999999999999,
+    "auc15": 0.05333333333333334,
+    "auc5": 0.0,
+    "auc3": 0.0
+  },
+  "chess/window-06": {
+    "scene": "chess",
+    "window": "window-06",
+    "num_frames": 5,
+    "auc30": 0.5366666666666667,
+    "auc15": 0.33999999999999997,
+    "auc5": 0.16,
+    "auc3": 0.06666666666666667
+  },
+  "chess/window-07": {
+    "scene": "chess",
+    "window": "window-07",
+    "num_frames": 5,
+    "auc30": 0.6166666666666667,
+    "auc15": 0.43333333333333324,
+    "auc5": 0.16,
+    "auc3": 0.06666666666666667
+  },
+  "chess/window-08": {
+    "scene": "chess",
+    "window": "window-08",
+    "num_frames": 5,
+    "auc30": 0.08000000000000002,
+    "auc15": 0.0,
+    "auc5": 0.0,
+    "auc3": 0.0
+  },
+  "chess/window-09": {
+    "scene": "chess",
+    "window": "window-09",
+    "num_frames": 5,
+    "auc30": 0.4333333333333333,
+    "auc15": 0.23333333333333334,
+    "auc5": 0.0,
+    "auc3": 0.0
+  },
+  "fire/window-00": {
+    "scene": "fire",
+    "window": "window-00",
+    "num_frames": 5,
+    "auc30": 0.19333333333333333,
+    "auc15": 0.020000000000000004,
+    "auc5": 0.0,
+    "auc3": 0.0
+  },
+  "fire/window-01": {
+    "scene": "fire",
+    "window": "window-01",
+    "num_frames": 5,
+    "auc30": 0.0,
+    "auc15": 0.0,
+    "auc5": 0.0,
+    "auc3": 0.0
+  },
+  "fire/window-02": {
+    "scene": "fire",
+    "window": "window-02",
+    "num_frames": 5,
+    "auc30": 0.4400000000000001,
+    "auc15": 0.15333333333333332,
+    "auc5": 0.04,
+    "auc3": 0.0
+  },
+  "fire/window-03": {
+    "scene": "fire",
+    "window": "window-03",
+    "num_frames": 5,
+    "auc30": 0.3366666666666666,
+    "auc15": 0.05333333333333334,
+    "auc5": 0.0,
+    "auc3": 0.0
+  },
+  "fire/window-04": {
+    "scene": "fire",
+    "window": "window-04",
+    "num_frames": 5,
+    "auc30": 0.45000000000000007,
+    "auc15": 0.18666666666666665,
+    "auc5": 0.08,
+    "auc3": 0.06666666666666667
+  },
+  "fire/window-05": {
+    "scene": "fire",
+    "window": "window-05",
+    "num_frames": 5,
+    "auc30": 0.3766666666666666,
+    "auc15": 0.08666666666666666,
+    "auc5": 0.0,
+    "auc3": 0.0
+  },
+  "fire/window-06": {
+    "scene": "fire",
+    "window": "window-06",
+    "num_frames": 5,
+    "auc30": 0.23333333333333334,
+    "auc15": 0.05333333333333333,
+    "auc5": 0.0,
+    "auc3": 0.0
+  },
+  "fire/window-07": {
+    "scene": "fire",
+    "window": "window-07",
+    "num_frames": 5,
+    "auc30": 0.5266666666666667,
+    "auc15": 0.3333333333333333,
+    "auc5": 0.16,
+    "auc3": 0.03333333333333333
+  },
+  "fire/window-08": {
+    "scene": "fire",
+    "window": "window-08",
+    "num_frames": 5,
+    "auc30": 0.046666666666666676,
+    "auc15": 0.0,
+    "auc5": 0.0,
+    "auc3": 0.0
+  },
+  "fire/window-09": {
+    "scene": "fire",
+    "window": "window-09",
+    "num_frames": 5,
+    "auc30": 0.5166666666666668,
+    "auc15": 0.25333333333333335,
+    "auc5": 0.02,
+    "auc3": 0.0
+  },
+  "heads/window-00": {
+    "scene": "heads",
+    "window": "window-00",
+    "num_frames": 5,
+    "auc30": 0.37999999999999995,
+    "auc15": 0.16666666666666666,
+    "auc5": 0.0,
+    "auc3": 0.0
+  },
+  "heads/window-01": {
+    "scene": "heads",
+    "window": "window-01",
+    "num_frames": 5,
+    "auc30": 0.5700000000000001,
+    "auc15": 0.32000000000000006,
+    "auc5": 0.06000000000000001,
+    "auc3": 0.0
+  },
+  "heads/window-02": {
+    "scene": "heads",
+    "window": "window-02",
+    "num_frames": 5,
+    "auc30": 0.4066666666666667,
+    "auc15": 0.06666666666666667,
+    "auc5": 0.0,
+    "auc3": 0.0
+  },
+  "heads/window-03": {
+    "scene": "heads",
+    "window": "window-03",
+    "num_frames": 5,
+    "auc30": 0.46333333333333343,
+    "auc15": 0.13333333333333333,
+    "auc5": 0.0,
+    "auc3": 0.0
+  },
+  "heads/window-04": {
+    "scene": "heads",
+    "window": "window-04",
+    "num_frames": 5,
+    "auc30": 0.6099999999999999,
+    "auc15": 0.44000000000000006,
+    "auc5": 0.24,
+    "auc3": 0.09999999999999999
+  },
+  "heads/window-05": {
+    "scene": "heads",
+    "window": "window-05",
+    "num_frames": 5,
+    "auc30": 0.55,
+    "auc15": 0.38000000000000006,
+    "auc5": 0.08,
+    "auc3": 0.0
+  },
+  "heads/window-06": {
+    "scene": "heads",
+    "window": "window-06",
+    "num_frames": 5,
+    "auc30": 0.5300000000000001,
+    "auc15": 0.31333333333333335,
+    "auc5": 0.0,
+    "auc3": 0.0
+  },
+  "heads/window-07": {
+    "scene": "heads",
+    "window": "window-07",
+    "num_frames": 5,
+    "auc30": 0.7033333333333333,
+    "auc15": 0.49333333333333335,
+    "auc5": 0.18,
+    "auc3": 0.03333333333333333
+  },
+  "heads/window-08": {
+    "scene": "heads",
+    "window": "window-08",
+    "num_frames": 5,
+    "auc30": 0.62,
+    "auc15": 0.3333333333333333,
+    "auc5": 0.0,
+    "auc3": 0.0
+  },
+  "heads/window-09": {
+    "scene": "heads",
+    "window": "window-09",
+    "num_frames": 5,
+    "auc30": 0.17,
+    "auc15": 0.020000000000000004,
+    "auc5": 0.0,
+    "auc3": 0.0
+  },
+  "office/window-00": {
+    "scene": "office",
+    "window": "window-00",
+    "num_frames": 5,
+    "auc30": 0.0,
+    "auc15": 0.0,
+    "auc5": 0.0,
+    "auc3": 0.0
+  },
+  "office/window-01": {
+    "scene": "office",
+    "window": "window-01",
+    "num_frames": 5,
+    "auc30": 0.09000000000000001,
+    "auc15": 0.0,
+    "auc5": 0.0,
+    "auc3": 0.0
+  },
+  "office/window-02": {
+    "scene": "office",
+    "window": "window-02",
+    "num_frames": 5,
+    "auc30": 0.30333333333333334,
+    "auc15": 0.14000000000000004,
+    "auc5": 0.0,
+    "auc3": 0.0
+  },
+  "office/window-03": {
+    "scene": "office",
+    "window": "window-03",
+    "num_frames": 5,
+    "auc30": 0.06333333333333332,
+    "auc15": 0.0,
+    "auc5": 0.0,
+    "auc3": 0.0
+  },
+  "office/window-04": {
+    "scene": "office",
+    "window": "window-04",
+    "num_frames": 5,
+    "auc30": 0.28,
+    "auc15": 0.04666666666666666,
+    "auc5": 0.0,
+    "auc3": 0.0
+  },
+  "office/window-05": {
+    "scene": "office",
+    "window": "window-05",
+    "num_frames": 5,
+    "auc30": 0.0,
+    "auc15": 0.0,
+    "auc5": 0.0,
+    "auc3": 0.0
+  },
+  "office/window-06": {
+    "scene": "office",
+    "window": "window-06",
+    "num_frames": 5,
+    "auc30": 0.4666666666666668,
+    "auc15": 0.19999999999999998,
+    "auc5": 0.04,
+    "auc3": 0.0
+  },
+  "office/window-07": {
+    "scene": "office",
+    "window": "window-07",
+    "num_frames": 5,
+    "auc30": 0.6133333333333333,
+    "auc15": 0.3666666666666666,
+    "auc5": 0.18000000000000002,
+    "auc3": 0.13333333333333333
+  },
+  "office/window-08": {
+    "scene": "office",
+    "window": "window-08",
+    "num_frames": 5,
+    "auc30": 0.5766666666666667,
+    "auc15": 0.23999999999999996,
+    "auc5": 0.0,
+    "auc3": 0.0
+  },
+  "office/window-09": {
+    "scene": "office",
+    "window": "window-09",
+    "num_frames": 5,
+    "auc30": 0.5100000000000001,
+    "auc15": 0.16666666666666669,
+    "auc5": 0.0,
+    "auc3": 0.0
+  },
+  "pumpkin/window-00": {
+    "scene": "pumpkin",
+    "window": "window-00",
+    "num_frames": 5,
+    "auc30": 0.0,
+    "auc15": 0.0,
+    "auc5": 0.0,
+    "auc3": 0.0
+  },
+  "pumpkin/window-01": {
+    "scene": "pumpkin",
+    "window": "window-01",
+    "num_frames": 5,
+    "auc30": 0.02,
+    "auc15": 0.0,
+    "auc5": 0.0,
+    "auc3": 0.0
+  },
+  "pumpkin/window-02": {
+    "scene": "pumpkin",
+    "window": "window-02",
+    "num_frames": 5,
+    "auc30": 0.14333333333333337,
+    "auc15": 0.08666666666666666,
+    "auc5": 0.0,
+    "auc3": 0.0
+  },
+  "pumpkin/window-03": {
+    "scene": "pumpkin",
+    "window": "window-03",
+    "num_frames": 5,
+    "auc30": 0.4366666666666667,
+    "auc15": 0.09333333333333334,
+    "auc5": 0.0,
+    "auc3": 0.0
+  },
+  "pumpkin/window-04": {
+    "scene": "pumpkin",
+    "window": "window-04",
+    "num_frames": 5,
+    "auc30": 0.8066666666666666,
+    "auc15": 0.6133333333333335,
+    "auc5": 0.16,
+    "auc3": 0.0
+  },
+  "pumpkin/window-05": {
+    "scene": "pumpkin",
+    "window": "window-05",
+    "num_frames": 5,
+    "auc30": 0.31333333333333335,
+    "auc15": 0.17333333333333334,
+    "auc5": 0.06000000000000001,
+    "auc3": 0.03333333333333333
+  },
+  "pumpkin/window-06": {
+    "scene": "pumpkin",
+    "window": "window-06",
+    "num_frames": 5,
+    "auc30": 0.016666666666666666,
+    "auc15": 0.0,
+    "auc5": 0.0,
+    "auc3": 0.0
+  },
+  "pumpkin/window-07": {
+    "scene": "pumpkin",
+    "window": "window-07",
+    "num_frames": 5,
+    "auc30": 0.02333333333333333,
+    "auc15": 0.0,
+    "auc5": 0.0,
+    "auc3": 0.0
+  },
+  "pumpkin/window-08": {
+    "scene": "pumpkin",
+    "window": "window-08",
+    "num_frames": 5,
+    "auc30": 0.0,
+    "auc15": 0.0,
+    "auc5": 0.0,
+    "auc3": 0.0
+  },
+  "pumpkin/window-09": {
+    "scene": "pumpkin",
+    "window": "window-09",
+    "num_frames": 5,
+    "auc30": 0.5266666666666667,
+    "auc15": 0.18000000000000002,
+    "auc5": 0.0,
+    "auc3": 0.0
+  },
+  "redkitchen/window-00": {
+    "scene": "redkitchen",
+    "window": "window-00",
+    "num_frames": 5,
+    "auc30": 0.2666666666666666,
+    "auc15": 0.04666666666666666,
+    "auc5": 0.0,
+    "auc3": 0.0
+  },
+  "redkitchen/window-01": {
+    "scene": "redkitchen",
+    "window": "window-01",
+    "num_frames": 5,
+    "auc30": 0.19333333333333338,
+    "auc15": 0.09999999999999999,
+    "auc5": 0.0,
+    "auc3": 0.0
+  },
+  "redkitchen/window-02": {
+    "scene": "redkitchen",
+    "window": "window-02",
+    "num_frames": 5,
+    "auc30": 0.0033333333333333335,
+    "auc15": 0.0,
+    "auc5": 0.0,
+    "auc3": 0.0
+  },
+  "redkitchen/window-03": {
+    "scene": "redkitchen",
+    "window": "window-03",
+    "num_frames": 5,
+    "auc30": 0.21666666666666662,
+    "auc15": 0.05999999999999999,
+    "auc5": 0.0,
+    "auc3": 0.0
+  },
+  "redkitchen/window-04": {
+    "scene": "redkitchen",
+    "window": "window-04",
+    "num_frames": 5,
+    "auc30": 0.010000000000000002,
+    "auc15": 0.0,
+    "auc5": 0.0,
+    "auc3": 0.0
+  },
+  "redkitchen/window-05": {
+    "scene": "redkitchen",
+    "window": "window-05",
+    "num_frames": 5,
+    "auc30": 0.21000000000000008,
+    "auc15": 0.07333333333333332,
+    "auc5": 0.0,
+    "auc3": 0.0
+  },
+  "redkitchen/window-06": {
+    "scene": "redkitchen",
+    "window": "window-06",
+    "num_frames": 5,
+    "auc30": 0.04000000000000001,
+    "auc15": 0.0,
+    "auc5": 0.0,
+    "auc3": 0.0
+  },
+  "redkitchen/window-07": {
+    "scene": "redkitchen",
+    "window": "window-07",
+    "num_frames": 5,
+    "auc30": 0.4033333333333332,
+    "auc15": 0.18000000000000002,
+    "auc5": 0.0,
+    "auc3": 0.0
+  },
+  "redkitchen/window-08": {
+    "scene": "redkitchen",
+    "window": "window-08",
+    "num_frames": 5,
+    "auc30": 0.6599999999999998,
+    "auc15": 0.42000000000000004,
+    "auc5": 0.0,
+    "auc3": 0.0
+  },
+  "redkitchen/window-09": {
+    "scene": "redkitchen",
+    "window": "window-09",
+    "num_frames": 5,
+    "auc30": 0.3433333333333333,
+    "auc15": 0.12666666666666665,
+    "auc5": 0.08,
+    "auc3": 0.06666666666666667
+  },
+  "stairs/window-00": {
+    "scene": "stairs",
+    "window": "window-00",
+    "num_frames": 5,
+    "auc30": 0.12666666666666662,
+    "auc15": 0.006666666666666667,
+    "auc5": 0.0,
+    "auc3": 0.0
+  },
+  "stairs/window-01": {
+    "scene": "stairs",
+    "window": "window-01",
+    "num_frames": 5,
+    "auc30": 0.6799999999999999,
+    "auc15": 0.42,
+    "auc5": 0.04,
+    "auc3": 0.0
+  },
+  "stairs/window-02": {
+    "scene": "stairs",
+    "window": "window-02",
+    "num_frames": 5,
+    "auc30": 0.3366666666666667,
+    "auc15": 0.21333333333333332,
+    "auc5": 0.06000000000000001,
+    "auc3": 0.03333333333333333
+  },
+  "stairs/window-03": {
+    "scene": "stairs",
+    "window": "window-03",
+    "num_frames": 5,
+    "auc30": 0.3266666666666666,
+    "auc15": 0.16666666666666666,
+    "auc5": 0.02,
+    "auc3": 0.0
+  },
+  "stairs/window-04": {
+    "scene": "stairs",
+    "window": "window-04",
+    "num_frames": 5,
+    "auc30": 0.17666666666666667,
+    "auc15": 0.09333333333333332,
+    "auc5": 0.0,
+    "auc3": 0.0
+  },
+  "stairs/window-05": {
+    "scene": "stairs",
+    "window": "window-05",
+    "num_frames": 5,
+    "auc30": 0.049999999999999996,
+    "auc15": 0.0,
+    "auc5": 0.0,
+    "auc3": 0.0
+  },
+  "stairs/window-06": {
+    "scene": "stairs",
+    "window": "window-06",
+    "num_frames": 5,
+    "auc30": 0.07333333333333335,
+    "auc15": 0.03333333333333333,
+    "auc5": 0.0,
+    "auc3": 0.0
+  },
+  "stairs/window-07": {
+    "scene": "stairs",
+    "window": "window-07",
+    "num_frames": 5,
+    "auc30": 0.17666666666666664,
+    "auc15": 0.02666666666666667,
+    "auc5": 0.0,
+    "auc3": 0.0
+  },
+  "stairs/window-08": {
+    "scene": "stairs",
+    "window": "window-08",
+    "num_frames": 5,
+    "auc30": 0.1433333333333334,
+    "auc15": 0.08666666666666666,
+    "auc5": 0.0,
+    "auc3": 0.0
+  },
+  "stairs/window-09": {
+    "scene": "stairs",
+    "window": "window-09",
+    "num_frames": 5,
+    "auc30": 0.11999999999999998,
+    "auc15": 0.04,
+    "auc5": 0.0,
+    "auc3": 0.0
+  },
+  "__mean__": {
+    "auc30": 0.3091904761904762,
+    "auc15": 0.14657142857142855,
+    "auc5": 0.027142857142857142,
+    "auc3": 0.009523809523809525
+  }
+}

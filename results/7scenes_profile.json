@@ -1,0 +1,366 @@
+{
+  "model": "VGGT",
+  "use_avggt": false,
+  "subsample_factor": null,
+  "tearly": null,
+  "preserve_diagonal": null,
+  "device": "cuda",
+  "dtype": "torch.bfloat16",
+  "num_samples": 70,
+  "total_inference_seconds": 87.00986376591027,
+  "mean_inference_seconds": 1.2429980537987182,
+  "median_inference_seconds": 1.1877550738863647,
+  "peak_memory_gb": 12.251191139221191,
+  "samples": {
+    "chess/window-00": {
+      "num_frames": 20,
+      "inference_seconds": 4.683616233989596,
+      "peak_memory_gb": 12.24950647354126
+    },
+    "chess/window-01": {
+      "num_frames": 20,
+      "inference_seconds": 1.1861334228888154,
+      "peak_memory_gb": 12.251191139221191
+    },
+    "chess/window-02": {
+      "num_frames": 20,
+      "inference_seconds": 1.1878426894545555,
+      "peak_memory_gb": 12.251191139221191
+    },
+    "chess/window-03": {
+      "num_frames": 20,
+      "inference_seconds": 1.1875404799357057,
+      "peak_memory_gb": 12.251191139221191
+    },
+    "chess/window-04": {
+      "num_frames": 20,
+      "inference_seconds": 1.186713693663478,
+      "peak_memory_gb": 12.251191139221191
+    },
+    "chess/window-05": {
+      "num_frames": 20,
+      "inference_seconds": 1.1869650688022375,
+      "peak_memory_gb": 12.251191139221191
+    },
+    "chess/window-06": {
+      "num_frames": 20,
+      "inference_seconds": 1.1867943964898586,
+      "peak_memory_gb": 12.251191139221191
+    },
+    "chess/window-07": {
+      "num_frames": 20,
+      "inference_seconds": 1.1858111675828695,
+      "peak_memory_gb": 12.251191139221191
+    },
+    "chess/window-08": {
+      "num_frames": 20,
+      "inference_seconds": 1.2216646717861295,
+      "peak_memory_gb": 12.251191139221191
+    },
+    "chess/window-09": {
+      "num_frames": 20,
+      "inference_seconds": 1.1884529674425721,
+      "peak_memory_gb": 12.251191139221191
+    },
+    "fire/window-00": {
+      "num_frames": 20,
+      "inference_seconds": 1.1862635277211666,
+      "peak_memory_gb": 12.251191139221191
+    },
+    "fire/window-01": {
+      "num_frames": 20,
+      "inference_seconds": 1.203151729889214,
+      "peak_memory_gb": 12.251191139221191
+    },
+    "fire/window-02": {
+      "num_frames": 20,
+      "inference_seconds": 1.1862808102741838,
+      "peak_memory_gb": 12.251191139221191
+    },
+    "fire/window-03": {
+      "num_frames": 20,
+      "inference_seconds": 1.2098419517278671,
+      "peak_memory_gb": 12.251191139221191
+    },
+    "fire/window-04": {
+      "num_frames": 20,
+      "inference_seconds": 1.1862167594954371,
+      "peak_memory_gb": 12.251191139221191
+    },
+    "fire/window-05": {
+      "num_frames": 20,
+      "inference_seconds": 1.1870078286156058,
+      "peak_memory_gb": 12.251191139221191
+    },
+    "fire/window-06": {
+      "num_frames": 20,
+      "inference_seconds": 1.1886168960481882,
+      "peak_memory_gb": 12.251191139221191
+    },
+    "fire/window-07": {
+      "num_frames": 20,
+      "inference_seconds": 1.2081175772473216,
+      "peak_memory_gb": 12.251191139221191
+    },
+    "fire/window-08": {
+      "num_frames": 20,
+      "inference_seconds": 1.1874843845143914,
+      "peak_memory_gb": 12.251191139221191
+    },
+    "fire/window-09": {
+      "num_frames": 20,
+      "inference_seconds": 1.186977231875062,
+      "peak_memory_gb": 12.251191139221191
+    },
+    "heads/window-00": {
+      "num_frames": 20,
+      "inference_seconds": 1.1890407437458634,
+      "peak_memory_gb": 12.251191139221191
+    },
+    "heads/window-01": {
+      "num_frames": 20,
+      "inference_seconds": 1.2275207927450538,
+      "peak_memory_gb": 12.251191139221191
+    },
+    "heads/window-02": {
+      "num_frames": 20,
+      "inference_seconds": 1.1886747255921364,
+      "peak_memory_gb": 12.251191139221191
+    },
+    "heads/window-03": {
+      "num_frames": 20,
+      "inference_seconds": 1.1859447481110692,
+      "peak_memory_gb": 12.251191139221191
+    },
+    "heads/window-04": {
+      "num_frames": 20,
+      "inference_seconds": 1.1920672794803977,
+      "peak_memory_gb": 12.251191139221191
+    },
+    "heads/window-05": {
+      "num_frames": 20,
+      "inference_seconds": 1.1936173466965556,
+      "peak_memory_gb": 12.251191139221191
+    },
+    "heads/window-06": {
+      "num_frames": 20,
+      "inference_seconds": 1.188178331591189,
+      "peak_memory_gb": 12.251191139221191
+    },
+    "heads/window-07": {
+      "num_frames": 20,
+      "inference_seconds": 1.1872672159224749,
+      "peak_memory_gb": 12.251191139221191
+    },
+    "heads/window-08": {
+      "num_frames": 20,
+      "inference_seconds": 1.186891139484942,
+      "peak_memory_gb": 12.251191139221191
+    },
+    "heads/window-09": {
+      "num_frames": 20,
+      "inference_seconds": 1.1870553782209754,
+      "peak_memory_gb": 12.251191139221191
+    },
+    "office/window-00": {
+      "num_frames": 20,
+      "inference_seconds": 1.206603846512735,
+      "peak_memory_gb": 12.251191139221191
+    },
+    "office/window-01": {
+      "num_frames": 20,
+      "inference_seconds": 1.187101824209094,
+      "peak_memory_gb": 12.251191139221191
+    },
+    "office/window-02": {
+      "num_frames": 20,
+      "inference_seconds": 1.1875772504135966,
+      "peak_memory_gb": 12.251191139221191
+    },
+    "office/window-03": {
+      "num_frames": 20,
+      "inference_seconds": 1.1886493070051074,
+      "peak_memory_gb": 12.251191139221191
+    },
+    "office/window-04": {
+      "num_frames": 20,
+      "inference_seconds": 1.1874635852873325,
+      "peak_memory_gb": 12.251191139221191
+    },
+    "office/window-05": {
+      "num_frames": 20,
+      "inference_seconds": 1.188223627395928,
+      "peak_memory_gb": 12.251191139221191
+    },
+    "office/window-06": {
+      "num_frames": 20,
+      "inference_seconds": 1.1975406417623162,
+      "peak_memory_gb": 12.251191139221191
+    },
+    "office/window-07": {
+      "num_frames": 20,
+      "inference_seconds": 1.1868957681581378,
+      "peak_memory_gb": 12.251191139221191
+    },
+    "office/window-08": {
+      "num_frames": 20,
+      "inference_seconds": 1.189030927605927,
+      "peak_memory_gb": 12.251191139221191
+    },
+    "office/window-09": {
+      "num_frames": 20,
+      "inference_seconds": 1.1974138030782342,
+      "peak_memory_gb": 12.251191139221191
+    },
+    "pumpkin/window-00": {
+      "num_frames": 20,
+      "inference_seconds": 1.1863208841532469,
+      "peak_memory_gb": 12.251191139221191
+    },
+    "pumpkin/window-01": {
+      "num_frames": 20,
+      "inference_seconds": 1.1869226088747382,
+      "peak_memory_gb": 12.251191139221191
+    },
+    "pumpkin/window-02": {
+      "num_frames": 20,
+      "inference_seconds": 1.1877494845539331,
+      "peak_memory_gb": 12.251191139221191
+    },
+    "pumpkin/window-03": {
+      "num_frames": 20,
+      "inference_seconds": 1.2115902304649353,
+      "peak_memory_gb": 12.251191139221191
+    },
+    "pumpkin/window-04": {
+      "num_frames": 20,
+      "inference_seconds": 1.1913828486576676,
+      "peak_memory_gb": 12.251191139221191
+    },
+    "pumpkin/window-05": {
+      "num_frames": 20,
+      "inference_seconds": 1.1890737134963274,
+      "peak_memory_gb": 12.251191139221191
+    },
+    "pumpkin/window-06": {
+      "num_frames": 20,
+      "inference_seconds": 1.189859563484788,
+      "peak_memory_gb": 12.251191139221191
+    },
+    "pumpkin/window-07": {
+      "num_frames": 20,
+      "inference_seconds": 1.1874623019248247,
+      "peak_memory_gb": 12.251191139221191
+    },
+    "pumpkin/window-08": {
+      "num_frames": 20,
+      "inference_seconds": 1.1869916347786784,
+      "peak_memory_gb": 12.251191139221191
+    },
+    "pumpkin/window-09": {
+      "num_frames": 20,
+      "inference_seconds": 1.1872531389817595,
+      "peak_memory_gb": 12.251191139221191
+    },
+    "redkitchen/window-00": {
+      "num_frames": 20,
+      "inference_seconds": 1.1857703672721982,
+      "peak_memory_gb": 12.251191139221191
+    },
+    "redkitchen/window-01": {
+      "num_frames": 20,
+      "inference_seconds": 1.209110675379634,
+      "peak_memory_gb": 12.251191139221191
+    },
+    "redkitchen/window-02": {
+      "num_frames": 20,
+      "inference_seconds": 1.1862199734896421,
+      "peak_memory_gb": 12.251191139221191
+    },
+    "redkitchen/window-03": {
+      "num_frames": 20,
+      "inference_seconds": 1.1876099174842238,
+      "peak_memory_gb": 12.251191139221191
+    },
+    "redkitchen/window-04": {
+      "num_frames": 20,
+      "inference_seconds": 1.2248410992324352,
+      "peak_memory_gb": 12.251191139221191
+    },
+    "redkitchen/window-05": {
+      "num_frames": 20,
+      "inference_seconds": 1.188411888666451,
+      "peak_memory_gb": 12.251191139221191
+    },
+    "redkitchen/window-06": {
+      "num_frames": 20,
+      "inference_seconds": 1.1877606632187963,
+      "peak_memory_gb": 12.251191139221191
+    },
+    "redkitchen/window-07": {
+      "num_frames": 20,
+      "inference_seconds": 1.2326712869107723,
+      "peak_memory_gb": 12.251191139221191
+    },
+    "redkitchen/window-08": {
+      "num_frames": 20,
+      "inference_seconds": 1.2229822110384703,
+      "peak_memory_gb": 12.251191139221191
+    },
+    "redkitchen/window-09": {
+      "num_frames": 20,
+      "inference_seconds": 1.1997224260121584,
+      "peak_memory_gb": 12.251191139221191
+    },
+    "stairs/window-00": {
+      "num_frames": 20,
+      "inference_seconds": 1.1873142328113317,
+      "peak_memory_gb": 12.251191139221191
+    },
+    "stairs/window-01": {
+      "num_frames": 20,
+      "inference_seconds": 1.1865352671593428,
+      "peak_memory_gb": 12.251191139221191
+    },
+    "stairs/window-02": {
+      "num_frames": 20,
+      "inference_seconds": 1.1872924016788602,
+      "peak_memory_gb": 12.251191139221191
+    },
+    "stairs/window-03": {
+      "num_frames": 20,
+      "inference_seconds": 1.1877462649717927,
+      "peak_memory_gb": 12.251191139221191
+    },
+    "stairs/window-04": {
+      "num_frames": 20,
+      "inference_seconds": 1.2067162683233619,
+      "peak_memory_gb": 12.251191139221191
+    },
+    "stairs/window-05": {
+      "num_frames": 20,
+      "inference_seconds": 1.1869930978864431,
+      "peak_memory_gb": 12.251191139221191
+    },
+    "stairs/window-06": {
+      "num_frames": 20,
+      "inference_seconds": 1.1880543557927012,
+      "peak_memory_gb": 12.251191139221191
+    },
+    "stairs/window-07": {
+      "num_frames": 20,
+      "inference_seconds": 1.1875855028629303,
+      "peak_memory_gb": 12.251191139221191
+    },
+    "stairs/window-08": {
+      "num_frames": 20,
+      "inference_seconds": 1.1892087375745177,
+      "peak_memory_gb": 12.251191139221191
+    },
+    "stairs/window-09": {
+      "num_frames": 20,
+      "inference_seconds": 1.1984589463099837,
+      "peak_memory_gb": 12.251191139221191
+    }
+  }
+}

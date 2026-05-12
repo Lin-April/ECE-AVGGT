@@ -1,0 +1,638 @@
+{
+  "chess/window-00": {
+    "scene": "chess",
+    "window": "window-00",
+    "num_frames": 10,
+    "auc30": 0.4014814814814814,
+    "auc15": 0.21777777777777776,
+    "auc5": 0.03111111111111111,
+    "auc3": 0.007407407407407408
+  },
+  "chess/window-01": {
+    "scene": "chess",
+    "window": "window-01",
+    "num_frames": 10,
+    "auc30": 0.2955555555555555,
+    "auc15": 0.09185185185185187,
+    "auc5": 0.0,
+    "auc3": 0.0
+  },
+  "chess/window-02": {
+    "scene": "chess",
+    "window": "window-02",
+    "num_frames": 10,
+    "auc30": 0.88,
+    "auc15": 0.7792592592592592,
+    "auc5": 0.4666666666666666,
+    "auc3": 0.31111111111111106
+  },
+  "chess/window-03": {
+    "scene": "chess",
+    "window": "window-03",
+    "num_frames": 10,
+    "auc30": 0.3066666666666666,
+    "auc15": 0.1051851851851852,
+    "auc5": 0.0,
+    "auc3": 0.0
+  },
+  "chess/window-04": {
+    "scene": "chess",
+    "window": "window-04",
+    "num_frames": 10,
+    "auc30": 0.5125925925925927,
+    "auc15": 0.22074074074074077,
+    "auc5": 0.035555555555555556,
+    "auc3": 0.014814814814814815
+  },
+  "chess/window-05": {
+    "scene": "chess",
+    "window": "window-05",
+    "num_frames": 10,
+    "auc30": 0.32962962962962955,
+    "auc15": 0.0874074074074074,
+    "auc5": 0.017777777777777778,
+    "auc3": 0.0
+  },
+  "chess/window-06": {
+    "scene": "chess",
+    "window": "window-06",
+    "num_frames": 10,
+    "auc30": 0.6888888888888889,
+    "auc15": 0.49777777777777776,
+    "auc5": 0.2,
+    "auc3": 0.09629629629629628
+  },
+  "chess/window-07": {
+    "scene": "chess",
+    "window": "window-07",
+    "num_frames": 10,
+    "auc30": 0.7592592592592593,
+    "auc15": 0.6385185185185185,
+    "auc5": 0.36444444444444446,
+    "auc3": 0.23703703703703705
+  },
+  "chess/window-08": {
+    "scene": "chess",
+    "window": "window-08",
+    "num_frames": 10,
+    "auc30": 0.10666666666666665,
+    "auc15": 0.02074074074074074,
+    "auc5": 0.0,
+    "auc3": 0.0
+  },
+  "chess/window-09": {
+    "scene": "chess",
+    "window": "window-09",
+    "num_frames": 10,
+    "auc30": 0.6651851851851852,
+    "auc15": 0.4148148148148148,
+    "auc5": 0.048888888888888885,
+    "auc3": 0.022222222222222223
+  },
+  "fire/window-00": {
+    "scene": "fire",
+    "window": "window-00",
+    "num_frames": 10,
+    "auc30": 0.3333333333333333,
+    "auc15": 0.14222222222222225,
+    "auc5": 0.026666666666666665,
+    "auc3": 0.014814814814814815
+  },
+  "fire/window-01": {
+    "scene": "fire",
+    "window": "window-01",
+    "num_frames": 10,
+    "auc30": 0.07851851851851852,
+    "auc15": 0.05185185185185185,
+    "auc5": 0.008888888888888889,
+    "auc3": 0.0
+  },
+  "fire/window-02": {
+    "scene": "fire",
+    "window": "window-02",
+    "num_frames": 10,
+    "auc30": 0.4851851851851852,
+    "auc15": 0.1674074074074074,
+    "auc5": 0.008888888888888889,
+    "auc3": 0.0
+  },
+  "fire/window-03": {
+    "scene": "fire",
+    "window": "window-03",
+    "num_frames": 10,
+    "auc30": 0.5874074074074075,
+    "auc15": 0.32888888888888884,
+    "auc5": 0.048888888888888885,
+    "auc3": 0.022222222222222223
+  },
+  "fire/window-04": {
+    "scene": "fire",
+    "window": "window-04",
+    "num_frames": 10,
+    "auc30": 0.562962962962963,
+    "auc15": 0.33777777777777784,
+    "auc5": 0.08,
+    "auc3": 0.03703703703703704
+  },
+  "fire/window-05": {
+    "scene": "fire",
+    "window": "window-05",
+    "num_frames": 10,
+    "auc30": 0.4437037037037039,
+    "auc15": 0.1511111111111111,
+    "auc5": 0.013333333333333332,
+    "auc3": 0.007407407407407408
+  },
+  "fire/window-06": {
+    "scene": "fire",
+    "window": "window-06",
+    "num_frames": 10,
+    "auc30": 0.522962962962963,
+    "auc15": 0.19851851851851848,
+    "auc5": 0.03111111111111111,
+    "auc3": 0.014814814814814815
+  },
+  "fire/window-07": {
+    "scene": "fire",
+    "window": "window-07",
+    "num_frames": 10,
+    "auc30": 0.6,
+    "auc15": 0.3377777777777778,
+    "auc5": 0.02222222222222222,
+    "auc3": 0.014814814814814815
+  },
+  "fire/window-08": {
+    "scene": "fire",
+    "window": "window-08",
+    "num_frames": 10,
+    "auc30": 0.42370370370370375,
+    "auc15": 0.21185185185185187,
+    "auc5": 0.013333333333333332,
+    "auc3": 0.0
+  },
+  "fire/window-09": {
+    "scene": "fire",
+    "window": "window-09",
+    "num_frames": 10,
+    "auc30": 0.7414814814814814,
+    "auc15": 0.5733333333333331,
+    "auc5": 0.2577777777777778,
+    "auc3": 0.1259259259259259
+  },
+  "heads/window-00": {
+    "scene": "heads",
+    "window": "window-00",
+    "num_frames": 10,
+    "auc30": 0.6940740740740741,
+    "auc15": 0.48444444444444446,
+    "auc5": 0.13333333333333336,
+    "auc3": 0.037037037037037035
+  },
+  "heads/window-01": {
+    "scene": "heads",
+    "window": "window-01",
+    "num_frames": 10,
+    "auc30": 0.4570370370370372,
+    "auc15": 0.19259259259259257,
+    "auc5": 0.017777777777777778,
+    "auc3": 0.0
+  },
+  "heads/window-02": {
+    "scene": "heads",
+    "window": "window-02",
+    "num_frames": 10,
+    "auc30": 0.5051851851851853,
+    "auc15": 0.23999999999999996,
+    "auc5": 0.017777777777777778,
+    "auc3": 0.0
+  },
+  "heads/window-03": {
+    "scene": "heads",
+    "window": "window-03",
+    "num_frames": 10,
+    "auc30": 0.5733333333333335,
+    "auc15": 0.31407407407407406,
+    "auc5": 0.0044444444444444444,
+    "auc3": 0.0
+  },
+  "heads/window-04": {
+    "scene": "heads",
+    "window": "window-04",
+    "num_frames": 10,
+    "auc30": 0.7200000000000001,
+    "auc15": 0.5437037037037038,
+    "auc5": 0.24444444444444446,
+    "auc3": 0.09629629629629628
+  },
+  "heads/window-05": {
+    "scene": "heads",
+    "window": "window-05",
+    "num_frames": 10,
+    "auc30": 0.5814814814814816,
+    "auc15": 0.3659259259259258,
+    "auc5": 0.07555555555555556,
+    "auc3": 0.0
+  },
+  "heads/window-06": {
+    "scene": "heads",
+    "window": "window-06",
+    "num_frames": 10,
+    "auc30": 0.6251851851851852,
+    "auc15": 0.36296296296296293,
+    "auc5": 0.05333333333333333,
+    "auc3": 0.007407407407407408
+  },
+  "heads/window-07": {
+    "scene": "heads",
+    "window": "window-07",
+    "num_frames": 10,
+    "auc30": 0.7088888888888889,
+    "auc15": 0.5140740740740741,
+    "auc5": 0.16,
+    "auc3": 0.02962962962962963
+  },
+  "heads/window-08": {
+    "scene": "heads",
+    "window": "window-08",
+    "num_frames": 10,
+    "auc30": 0.7866666666666666,
+    "auc15": 0.6251851851851851,
+    "auc5": 0.22666666666666666,
+    "auc3": 0.08148148148148147
+  },
+  "heads/window-09": {
+    "scene": "heads",
+    "window": "window-09",
+    "num_frames": 10,
+    "auc30": 0.41037037037037044,
+    "auc15": 0.1822222222222222,
+    "auc5": 0.04888888888888889,
+    "auc3": 0.007407407407407408
+  },
+  "office/window-00": {
+    "scene": "office",
+    "window": "window-00",
+    "num_frames": 10,
+    "auc30": 0.2518518518518519,
+    "auc15": 0.11259259259259262,
+    "auc5": 0.02222222222222222,
+    "auc3": 0.014814814814814815
+  },
+  "office/window-01": {
+    "scene": "office",
+    "window": "window-01",
+    "num_frames": 10,
+    "auc30": 0.08222222222222222,
+    "auc15": 0.01037037037037037,
+    "auc5": 0.0,
+    "auc3": 0.0
+  },
+  "office/window-02": {
+    "scene": "office",
+    "window": "window-02",
+    "num_frames": 10,
+    "auc30": 0.4807407407407408,
+    "auc15": 0.2725925925925926,
+    "auc5": 0.08,
+    "auc3": 0.037037037037037035
+  },
+  "office/window-03": {
+    "scene": "office",
+    "window": "window-03",
+    "num_frames": 10,
+    "auc30": 0.3185185185185186,
+    "auc15": 0.047407407407407405,
+    "auc5": 0.0,
+    "auc3": 0.0
+  },
+  "office/window-04": {
+    "scene": "office",
+    "window": "window-04",
+    "num_frames": 10,
+    "auc30": 0.4600000000000001,
+    "auc15": 0.1511111111111111,
+    "auc5": 0.0,
+    "auc3": 0.0
+  },
+  "office/window-05": {
+    "scene": "office",
+    "window": "window-05",
+    "num_frames": 10,
+    "auc30": 0.07407407407407408,
+    "auc15": 0.0044444444444444444,
+    "auc5": 0.0,
+    "auc3": 0.0
+  },
+  "office/window-06": {
+    "scene": "office",
+    "window": "window-06",
+    "num_frames": 10,
+    "auc30": 0.6451851851851853,
+    "auc15": 0.43703703703703717,
+    "auc5": 0.13333333333333336,
+    "auc3": 0.05925925925925926
+  },
+  "office/window-07": {
+    "scene": "office",
+    "window": "window-07",
+    "num_frames": 10,
+    "auc30": 0.6481481481481481,
+    "auc15": 0.4148148148148148,
+    "auc5": 0.10222222222222221,
+    "auc3": 0.05185185185185185
+  },
+  "office/window-08": {
+    "scene": "office",
+    "window": "window-08",
+    "num_frames": 10,
+    "auc30": 0.6281481481481481,
+    "auc15": 0.29777777777777775,
+    "auc5": 0.0,
+    "auc3": 0.0
+  },
+  "office/window-09": {
+    "scene": "office",
+    "window": "window-09",
+    "num_frames": 10,
+    "auc30": 0.6740740740740742,
+    "auc15": 0.43555555555555553,
+    "auc5": 0.08444444444444445,
+    "auc3": 0.037037037037037035
+  },
+  "pumpkin/window-00": {
+    "scene": "pumpkin",
+    "window": "window-00",
+    "num_frames": 10,
+    "auc30": 0.037777777777777785,
+    "auc15": 0.0059259259259259265,
+    "auc5": 0.0,
+    "auc3": 0.0
+  },
+  "pumpkin/window-01": {
+    "scene": "pumpkin",
+    "window": "window-01",
+    "num_frames": 10,
+    "auc30": 0.042962962962962974,
+    "auc15": 0.0014814814814814816,
+    "auc5": 0.0,
+    "auc3": 0.0
+  },
+  "pumpkin/window-02": {
+    "scene": "pumpkin",
+    "window": "window-02",
+    "num_frames": 10,
+    "auc30": 0.2133333333333333,
+    "auc15": 0.09333333333333334,
+    "auc5": 0.013333333333333332,
+    "auc3": 0.007407407407407408
+  },
+  "pumpkin/window-03": {
+    "scene": "pumpkin",
+    "window": "window-03",
+    "num_frames": 10,
+    "auc30": 0.5340740740740741,
+    "auc15": 0.27259259259259255,
+    "auc5": 0.03555555555555555,
+    "auc3": 0.014814814814814815
+  },
+  "pumpkin/window-04": {
+    "scene": "pumpkin",
+    "window": "window-04",
+    "num_frames": 10,
+    "auc30": 0.8533333333333334,
+    "auc15": 0.7155555555555556,
+    "auc5": 0.3288888888888889,
+    "auc3": 0.14074074074074075
+  },
+  "pumpkin/window-05": {
+    "scene": "pumpkin",
+    "window": "window-05",
+    "num_frames": 10,
+    "auc30": 0.15777777777777777,
+    "auc15": 0.04,
+    "auc5": 0.0044444444444444444,
+    "auc3": 0.0
+  },
+  "pumpkin/window-06": {
+    "scene": "pumpkin",
+    "window": "window-06",
+    "num_frames": 10,
+    "auc30": 0.024444444444444442,
+    "auc15": 0.008888888888888889,
+    "auc5": 0.0,
+    "auc3": 0.0
+  },
+  "pumpkin/window-07": {
+    "scene": "pumpkin",
+    "window": "window-07",
+    "num_frames": 10,
+    "auc30": 0.11481481481481483,
+    "auc15": 0.02962962962962963,
+    "auc5": 0.0,
+    "auc3": 0.0
+  },
+  "pumpkin/window-08": {
+    "scene": "pumpkin",
+    "window": "window-08",
+    "num_frames": 10,
+    "auc30": 0.10222222222222224,
+    "auc15": 0.023703703703703706,
+    "auc5": 0.0,
+    "auc3": 0.0
+  },
+  "pumpkin/window-09": {
+    "scene": "pumpkin",
+    "window": "window-09",
+    "num_frames": 10,
+    "auc30": 0.6451851851851853,
+    "auc15": 0.38518518518518513,
+    "auc5": 0.06222222222222222,
+    "auc3": 0.022222222222222223
+  },
+  "redkitchen/window-00": {
+    "scene": "redkitchen",
+    "window": "window-00",
+    "num_frames": 10,
+    "auc30": 0.22074074074074074,
+    "auc15": 0.06962962962962964,
+    "auc5": 0.03111111111111111,
+    "auc3": 0.022222222222222223
+  },
+  "redkitchen/window-01": {
+    "scene": "redkitchen",
+    "window": "window-01",
+    "num_frames": 10,
+    "auc30": 0.11851851851851852,
+    "auc15": 0.035555555555555556,
+    "auc5": 0.008888888888888889,
+    "auc3": 0.0
+  },
+  "redkitchen/window-02": {
+    "scene": "redkitchen",
+    "window": "window-02",
+    "num_frames": 10,
+    "auc30": 0.22074074074074077,
+    "auc15": 0.06666666666666667,
+    "auc5": 0.0,
+    "auc3": 0.0
+  },
+  "redkitchen/window-03": {
+    "scene": "redkitchen",
+    "window": "window-03",
+    "num_frames": 10,
+    "auc30": 0.45259259259259266,
+    "auc15": 0.16000000000000003,
+    "auc5": 0.017777777777777778,
+    "auc3": 0.0
+  },
+  "redkitchen/window-04": {
+    "scene": "redkitchen",
+    "window": "window-04",
+    "num_frames": 10,
+    "auc30": 0.1311111111111111,
+    "auc15": 0.01037037037037037,
+    "auc5": 0.0,
+    "auc3": 0.0
+  },
+  "redkitchen/window-05": {
+    "scene": "redkitchen",
+    "window": "window-05",
+    "num_frames": 10,
+    "auc30": 0.05703703703703704,
+    "auc15": 0.011851851851851853,
+    "auc5": 0.0,
+    "auc3": 0.0
+  },
+  "redkitchen/window-06": {
+    "scene": "redkitchen",
+    "window": "window-06",
+    "num_frames": 10,
+    "auc30": 0.025925925925925925,
+    "auc15": 0.0,
+    "auc5": 0.0,
+    "auc3": 0.0
+  },
+  "redkitchen/window-07": {
+    "scene": "redkitchen",
+    "window": "window-07",
+    "num_frames": 10,
+    "auc30": 0.5651851851851852,
+    "auc15": 0.3407407407407408,
+    "auc5": 0.04,
+    "auc3": 0.007407407407407408
+  },
+  "redkitchen/window-08": {
+    "scene": "redkitchen",
+    "window": "window-08",
+    "num_frames": 10,
+    "auc30": 0.7,
+    "auc15": 0.4459259259259259,
+    "auc5": 0.06222222222222222,
+    "auc3": 0.014814814814814815
+  },
+  "redkitchen/window-09": {
+    "scene": "redkitchen",
+    "window": "window-09",
+    "num_frames": 10,
+    "auc30": 0.6577777777777777,
+    "auc15": 0.44740740740740736,
+    "auc5": 0.10666666666666666,
+    "auc3": 0.037037037037037035
+  },
+  "stairs/window-00": {
+    "scene": "stairs",
+    "window": "window-00",
+    "num_frames": 10,
+    "auc30": 0.07703703703703703,
+    "auc15": 0.023703703703703706,
+    "auc5": 0.0,
+    "auc3": 0.0
+  },
+  "stairs/window-01": {
+    "scene": "stairs",
+    "window": "window-01",
+    "num_frames": 10,
+    "auc30": 0.6688888888888889,
+    "auc15": 0.44888888888888884,
+    "auc5": 0.07111111111111111,
+    "auc3": 0.007407407407407408
+  },
+  "stairs/window-02": {
+    "scene": "stairs",
+    "window": "window-02",
+    "num_frames": 10,
+    "auc30": 0.40592592592592613,
+    "auc15": 0.1214814814814815,
+    "auc5": 0.0,
+    "auc3": 0.0
+  },
+  "stairs/window-03": {
+    "scene": "stairs",
+    "window": "window-03",
+    "num_frames": 10,
+    "auc30": 0.3051851851851851,
+    "auc15": 0.13629629629629625,
+    "auc5": 0.013333333333333332,
+    "auc3": 0.0
+  },
+  "stairs/window-04": {
+    "scene": "stairs",
+    "window": "window-04",
+    "num_frames": 10,
+    "auc30": 0.27037037037037037,
+    "auc15": 0.05925925925925925,
+    "auc5": 0.0044444444444444444,
+    "auc3": 0.0
+  },
+  "stairs/window-05": {
+    "scene": "stairs",
+    "window": "window-05",
+    "num_frames": 10,
+    "auc30": 0.028888888888888888,
+    "auc15": 0.0,
+    "auc5": 0.0,
+    "auc3": 0.0
+  },
+  "stairs/window-06": {
+    "scene": "stairs",
+    "window": "window-06",
+    "num_frames": 10,
+    "auc30": 0.20222222222222222,
+    "auc15": 0.06222222222222222,
+    "auc5": 0.008888888888888889,
+    "auc3": 0.0
+  },
+  "stairs/window-07": {
+    "scene": "stairs",
+    "window": "window-07",
+    "num_frames": 10,
+    "auc30": 0.3059259259259258,
+    "auc15": 0.13925925925925925,
+    "auc5": 0.026666666666666665,
+    "auc3": 0.007407407407407408
+  },
+  "stairs/window-08": {
+    "scene": "stairs",
+    "window": "window-08",
+    "num_frames": 10,
+    "auc30": 0.3081481481481481,
+    "auc15": 0.13185185185185186,
+    "auc5": 0.02222222222222222,
+    "auc3": 0.007407407407407408
+  },
+  "stairs/window-09": {
+    "scene": "stairs",
+    "window": "window-09",
+    "num_frames": 10,
+    "auc30": 0.05777777777777778,
+    "auc15": 0.01037037037037037,
+    "auc5": 0.0,
+    "auc3": 0.0
+  },
+  "__mean__": {
+    "auc30": 0.4079470899470899,
+    "auc15": 0.2268783068783069,
+    "auc5": 0.05625396825396826,
+    "auc3": 0.023915343915343917
+  }
+}

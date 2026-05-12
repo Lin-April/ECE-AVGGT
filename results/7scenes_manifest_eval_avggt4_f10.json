@@ -1,0 +1,638 @@
+{
+  "chess/window-00": {
+    "scene": "chess",
+    "window": "window-00",
+    "num_frames": 10,
+    "auc30": 0.39555555555555544,
+    "auc15": 0.22814814814814813,
+    "auc5": 0.048888888888888885,
+    "auc3": 0.014814814814814815
+  },
+  "chess/window-01": {
+    "scene": "chess",
+    "window": "window-01",
+    "num_frames": 10,
+    "auc30": 0.3355555555555555,
+    "auc15": 0.11111111111111112,
+    "auc5": 0.0044444444444444444,
+    "auc3": 0.0
+  },
+  "chess/window-02": {
+    "scene": "chess",
+    "window": "window-02",
+    "num_frames": 10,
+    "auc30": 0.8770370370370372,
+    "auc15": 0.768888888888889,
+    "auc5": 0.4133333333333333,
+    "auc3": 0.23703703703703702
+  },
+  "chess/window-03": {
+    "scene": "chess",
+    "window": "window-03",
+    "num_frames": 10,
+    "auc30": 0.3437037037037037,
+    "auc15": 0.11407407407407408,
+    "auc5": 0.02222222222222222,
+    "auc3": 0.007407407407407408
+  },
+  "chess/window-04": {
+    "scene": "chess",
+    "window": "window-04",
+    "num_frames": 10,
+    "auc30": 0.5518518518518519,
+    "auc15": 0.30518518518518517,
+    "auc5": 0.07555555555555556,
+    "auc3": 0.02962962962962963
+  },
+  "chess/window-05": {
+    "scene": "chess",
+    "window": "window-05",
+    "num_frames": 10,
+    "auc30": 0.35703703703703693,
+    "auc15": 0.11703703703703704,
+    "auc5": 0.013333333333333332,
+    "auc3": 0.0
+  },
+  "chess/window-06": {
+    "scene": "chess",
+    "window": "window-06",
+    "num_frames": 10,
+    "auc30": 0.6777777777777778,
+    "auc15": 0.4800000000000001,
+    "auc5": 0.18222222222222223,
+    "auc3": 0.06666666666666667
+  },
+  "chess/window-07": {
+    "scene": "chess",
+    "window": "window-07",
+    "num_frames": 10,
+    "auc30": 0.7807407407407408,
+    "auc15": 0.6414814814814814,
+    "auc5": 0.3777777777777778,
+    "auc3": 0.2222222222222222
+  },
+  "chess/window-08": {
+    "scene": "chess",
+    "window": "window-08",
+    "num_frames": 10,
+    "auc30": 0.12740740740740739,
+    "auc15": 0.026666666666666665,
+    "auc5": 0.0,
+    "auc3": 0.0
+  },
+  "chess/window-09": {
+    "scene": "chess",
+    "window": "window-09",
+    "num_frames": 10,
+    "auc30": 0.731851851851852,
+    "auc15": 0.5496296296296297,
+    "auc5": 0.19555555555555554,
+    "auc3": 0.08888888888888889
+  },
+  "fire/window-00": {
+    "scene": "fire",
+    "window": "window-00",
+    "num_frames": 10,
+    "auc30": 0.24518518518518514,
+    "auc15": 0.07111111111111111,
+    "auc5": 0.0,
+    "auc3": 0.0
+  },
+  "fire/window-01": {
+    "scene": "fire",
+    "window": "window-01",
+    "num_frames": 10,
+    "auc30": 0.06444444444444443,
+    "auc15": 0.05185185185185184,
+    "auc5": 0.026666666666666665,
+    "auc3": 0.014814814814814815
+  },
+  "fire/window-02": {
+    "scene": "fire",
+    "window": "window-02",
+    "num_frames": 10,
+    "auc30": 0.5681481481481482,
+    "auc15": 0.2740740740740741,
+    "auc5": 0.013333333333333332,
+    "auc3": 0.0
+  },
+  "fire/window-03": {
+    "scene": "fire",
+    "window": "window-03",
+    "num_frames": 10,
+    "auc30": 0.6525925925925926,
+    "auc15": 0.3703703703703704,
+    "auc5": 0.06222222222222222,
+    "auc3": 0.037037037037037035
+  },
+  "fire/window-04": {
+    "scene": "fire",
+    "window": "window-04",
+    "num_frames": 10,
+    "auc30": 0.5711111111111111,
+    "auc15": 0.28444444444444444,
+    "auc5": 0.026666666666666665,
+    "auc3": 0.0
+  },
+  "fire/window-05": {
+    "scene": "fire",
+    "window": "window-05",
+    "num_frames": 10,
+    "auc30": 0.5125925925925927,
+    "auc15": 0.20296296296296296,
+    "auc5": 0.017777777777777778,
+    "auc3": 0.014814814814814815
+  },
+  "fire/window-06": {
+    "scene": "fire",
+    "window": "window-06",
+    "num_frames": 10,
+    "auc30": 0.4414814814814816,
+    "auc15": 0.17925925925925928,
+    "auc5": 0.04444444444444444,
+    "auc3": 0.014814814814814815
+  },
+  "fire/window-07": {
+    "scene": "fire",
+    "window": "window-07",
+    "num_frames": 10,
+    "auc30": 0.66,
+    "auc15": 0.44296296296296295,
+    "auc5": 0.11111111111111112,
+    "auc3": 0.03703703703703704
+  },
+  "fire/window-08": {
+    "scene": "fire",
+    "window": "window-08",
+    "num_frames": 10,
+    "auc30": 0.42000000000000004,
+    "auc15": 0.18962962962962968,
+    "auc5": 0.02222222222222222,
+    "auc3": 0.0
+  },
+  "fire/window-09": {
+    "scene": "fire",
+    "window": "window-09",
+    "num_frames": 10,
+    "auc30": 0.7274074074074074,
+    "auc15": 0.5318518518518519,
+    "auc5": 0.23555555555555557,
+    "auc3": 0.1259259259259259
+  },
+  "heads/window-00": {
+    "scene": "heads",
+    "window": "window-00",
+    "num_frames": 10,
+    "auc30": 0.6555555555555556,
+    "auc15": 0.45037037037037037,
+    "auc5": 0.11555555555555555,
+    "auc3": 0.044444444444444446
+  },
+  "heads/window-01": {
+    "scene": "heads",
+    "window": "window-01",
+    "num_frames": 10,
+    "auc30": 0.4111111111111112,
+    "auc15": 0.17925925925925926,
+    "auc5": 0.0044444444444444444,
+    "auc3": 0.0
+  },
+  "heads/window-02": {
+    "scene": "heads",
+    "window": "window-02",
+    "num_frames": 10,
+    "auc30": 0.3970370370370369,
+    "auc15": 0.1274074074074074,
+    "auc5": 0.0044444444444444444,
+    "auc3": 0.0
+  },
+  "heads/window-03": {
+    "scene": "heads",
+    "window": "window-03",
+    "num_frames": 10,
+    "auc30": 0.5940740740740741,
+    "auc15": 0.3244444444444445,
+    "auc5": 0.0,
+    "auc3": 0.0
+  },
+  "heads/window-04": {
+    "scene": "heads",
+    "window": "window-04",
+    "num_frames": 10,
+    "auc30": 0.7377777777777779,
+    "auc15": 0.5614814814814815,
+    "auc5": 0.20444444444444448,
+    "auc3": 0.06666666666666667
+  },
+  "heads/window-05": {
+    "scene": "heads",
+    "window": "window-05",
+    "num_frames": 10,
+    "auc30": 0.5074074074074075,
+    "auc15": 0.27999999999999997,
+    "auc5": 0.0044444444444444444,
+    "auc3": 0.0
+  },
+  "heads/window-06": {
+    "scene": "heads",
+    "window": "window-06",
+    "num_frames": 10,
+    "auc30": 0.6688888888888888,
+    "auc15": 0.4118518518518518,
+    "auc5": 0.04888888888888889,
+    "auc3": 0.0
+  },
+  "heads/window-07": {
+    "scene": "heads",
+    "window": "window-07",
+    "num_frames": 10,
+    "auc30": 0.7518518518518518,
+    "auc15": 0.5733333333333334,
+    "auc5": 0.24,
+    "auc3": 0.06666666666666667
+  },
+  "heads/window-08": {
+    "scene": "heads",
+    "window": "window-08",
+    "num_frames": 10,
+    "auc30": 0.8118518518518518,
+    "auc15": 0.6577777777777778,
+    "auc5": 0.28888888888888886,
+    "auc3": 0.1259259259259259
+  },
+  "heads/window-09": {
+    "scene": "heads",
+    "window": "window-09",
+    "num_frames": 10,
+    "auc30": 0.4103703703703702,
+    "auc15": 0.19407407407407407,
+    "auc5": 0.03555555555555555,
+    "auc3": 0.007407407407407408
+  },
+  "office/window-00": {
+    "scene": "office",
+    "window": "window-00",
+    "num_frames": 10,
+    "auc30": 0.27333333333333326,
+    "auc15": 0.0874074074074074,
+    "auc5": 0.017777777777777778,
+    "auc3": 0.014814814814814815
+  },
+  "office/window-01": {
+    "scene": "office",
+    "window": "window-01",
+    "num_frames": 10,
+    "auc30": 0.13185185185185186,
+    "auc15": 0.007407407407407407,
+    "auc5": 0.0,
+    "auc3": 0.0
+  },
+  "office/window-02": {
+    "scene": "office",
+    "window": "window-02",
+    "num_frames": 10,
+    "auc30": 0.5377777777777779,
+    "auc15": 0.3155555555555555,
+    "auc5": 0.08444444444444445,
+    "auc3": 0.02962962962962963
+  },
+  "office/window-03": {
+    "scene": "office",
+    "window": "window-03",
+    "num_frames": 10,
+    "auc30": 0.34814814814814815,
+    "auc15": 0.05481481481481481,
+    "auc5": 0.0,
+    "auc3": 0.0
+  },
+  "office/window-04": {
+    "scene": "office",
+    "window": "window-04",
+    "num_frames": 10,
+    "auc30": 0.48222222222222233,
+    "auc15": 0.19111111111111112,
+    "auc5": 0.008888888888888889,
+    "auc3": 0.0
+  },
+  "office/window-05": {
+    "scene": "office",
+    "window": "window-05",
+    "num_frames": 10,
+    "auc30": 0.20370370370370375,
+    "auc15": 0.04592592592592593,
+    "auc5": 0.0,
+    "auc3": 0.0
+  },
+  "office/window-06": {
+    "scene": "office",
+    "window": "window-06",
+    "num_frames": 10,
+    "auc30": 0.6385185185185185,
+    "auc15": 0.4162962962962963,
+    "auc5": 0.10666666666666666,
+    "auc3": 0.05185185185185185
+  },
+  "office/window-07": {
+    "scene": "office",
+    "window": "window-07",
+    "num_frames": 10,
+    "auc30": 0.7148148148148148,
+    "auc15": 0.5037037037037037,
+    "auc5": 0.17333333333333334,
+    "auc3": 0.08888888888888889
+  },
+  "office/window-08": {
+    "scene": "office",
+    "window": "window-08",
+    "num_frames": 10,
+    "auc30": 0.6503703703703704,
+    "auc15": 0.34370370370370373,
+    "auc5": 0.02222222222222222,
+    "auc3": 0.014814814814814815
+  },
+  "office/window-09": {
+    "scene": "office",
+    "window": "window-09",
+    "num_frames": 10,
+    "auc30": 0.7207407407407408,
+    "auc15": 0.5037037037037035,
+    "auc5": 0.12000000000000002,
+    "auc3": 0.05185185185185185
+  },
+  "pumpkin/window-00": {
+    "scene": "pumpkin",
+    "window": "window-00",
+    "num_frames": 10,
+    "auc30": 0.029629629629629634,
+    "auc15": 0.0,
+    "auc5": 0.0,
+    "auc3": 0.0
+  },
+  "pumpkin/window-01": {
+    "scene": "pumpkin",
+    "window": "window-01",
+    "num_frames": 10,
+    "auc30": 0.04222222222222223,
+    "auc15": 0.008888888888888889,
+    "auc5": 0.0,
+    "auc3": 0.0
+  },
+  "pumpkin/window-02": {
+    "scene": "pumpkin",
+    "window": "window-02",
+    "num_frames": 10,
+    "auc30": 0.18666666666666662,
+    "auc15": 0.07555555555555556,
+    "auc5": 0.0,
+    "auc3": 0.0
+  },
+  "pumpkin/window-03": {
+    "scene": "pumpkin",
+    "window": "window-03",
+    "num_frames": 10,
+    "auc30": 0.5222222222222223,
+    "auc15": 0.23555555555555552,
+    "auc5": 0.03111111111111111,
+    "auc3": 0.014814814814814815
+  },
+  "pumpkin/window-04": {
+    "scene": "pumpkin",
+    "window": "window-04",
+    "num_frames": 10,
+    "auc30": 0.8533333333333334,
+    "auc15": 0.7066666666666668,
+    "auc5": 0.28888888888888886,
+    "auc3": 0.07407407407407407
+  },
+  "pumpkin/window-05": {
+    "scene": "pumpkin",
+    "window": "window-05",
+    "num_frames": 10,
+    "auc30": 0.18000000000000002,
+    "auc15": 0.05777777777777779,
+    "auc5": 0.013333333333333332,
+    "auc3": 0.007407407407407408
+  },
+  "pumpkin/window-06": {
+    "scene": "pumpkin",
+    "window": "window-06",
+    "num_frames": 10,
+    "auc30": 0.025925925925925925,
+    "auc15": 0.0,
+    "auc5": 0.0,
+    "auc3": 0.0
+  },
+  "pumpkin/window-07": {
+    "scene": "pumpkin",
+    "window": "window-07",
+    "num_frames": 10,
+    "auc30": 0.14518518518518517,
+    "auc15": 0.06222222222222223,
+    "auc5": 0.017777777777777778,
+    "auc3": 0.014814814814814815
+  },
+  "pumpkin/window-08": {
+    "scene": "pumpkin",
+    "window": "window-08",
+    "num_frames": 10,
+    "auc30": 0.07481481481481479,
+    "auc15": 0.02222222222222222,
+    "auc5": 0.0,
+    "auc3": 0.0
+  },
+  "pumpkin/window-09": {
+    "scene": "pumpkin",
+    "window": "window-09",
+    "num_frames": 10,
+    "auc30": 0.6570370370370371,
+    "auc15": 0.3940740740740741,
+    "auc5": 0.07111111111111111,
+    "auc3": 0.02962962962962963
+  },
+  "redkitchen/window-00": {
+    "scene": "redkitchen",
+    "window": "window-00",
+    "num_frames": 10,
+    "auc30": 0.10814814814814815,
+    "auc15": 0.031111111111111107,
+    "auc5": 0.0,
+    "auc3": 0.0
+  },
+  "redkitchen/window-01": {
+    "scene": "redkitchen",
+    "window": "window-01",
+    "num_frames": 10,
+    "auc30": 0.15407407407407409,
+    "auc15": 0.05777777777777779,
+    "auc5": 0.008888888888888889,
+    "auc3": 0.0
+  },
+  "redkitchen/window-02": {
+    "scene": "redkitchen",
+    "window": "window-02",
+    "num_frames": 10,
+    "auc30": 0.20814814814814817,
+    "auc15": 0.0962962962962963,
+    "auc5": 0.013333333333333332,
+    "auc3": 0.007407407407407408
+  },
+  "redkitchen/window-03": {
+    "scene": "redkitchen",
+    "window": "window-03",
+    "num_frames": 10,
+    "auc30": 0.5155555555555557,
+    "auc15": 0.20444444444444443,
+    "auc5": 0.013333333333333332,
+    "auc3": 0.0
+  },
+  "redkitchen/window-04": {
+    "scene": "redkitchen",
+    "window": "window-04",
+    "num_frames": 10,
+    "auc30": 0.26888888888888884,
+    "auc15": 0.07703703703703704,
+    "auc5": 0.008888888888888889,
+    "auc3": 0.0
+  },
+  "redkitchen/window-05": {
+    "scene": "redkitchen",
+    "window": "window-05",
+    "num_frames": 10,
+    "auc30": 0.048148148148148155,
+    "auc15": 0.008888888888888889,
+    "auc5": 0.0,
+    "auc3": 0.0
+  },
+  "redkitchen/window-06": {
+    "scene": "redkitchen",
+    "window": "window-06",
+    "num_frames": 10,
+    "auc30": 0.01851851851851852,
+    "auc15": 0.0029629629629629632,
+    "auc5": 0.0,
+    "auc3": 0.0
+  },
+  "redkitchen/window-07": {
+    "scene": "redkitchen",
+    "window": "window-07",
+    "num_frames": 10,
+    "auc30": 0.5918518518518519,
+    "auc15": 0.38518518518518513,
+    "auc5": 0.06666666666666667,
+    "auc3": 0.014814814814814815
+  },
+  "redkitchen/window-08": {
+    "scene": "redkitchen",
+    "window": "window-08",
+    "num_frames": 10,
+    "auc30": 0.7244444444444444,
+    "auc15": 0.49185185185185193,
+    "auc5": 0.06222222222222222,
+    "auc3": 0.014814814814814815
+  },
+  "redkitchen/window-09": {
+    "scene": "redkitchen",
+    "window": "window-09",
+    "num_frames": 10,
+    "auc30": 0.6896296296296296,
+    "auc15": 0.5007407407407407,
+    "auc5": 0.21333333333333332,
+    "auc3": 0.13333333333333333
+  },
+  "stairs/window-00": {
+    "scene": "stairs",
+    "window": "window-00",
+    "num_frames": 10,
+    "auc30": 0.06592592592592593,
+    "auc15": 0.0044444444444444444,
+    "auc5": 0.0,
+    "auc3": 0.0
+  },
+  "stairs/window-01": {
+    "scene": "stairs",
+    "window": "window-01",
+    "num_frames": 10,
+    "auc30": 0.6977777777777778,
+    "auc15": 0.49925925925925924,
+    "auc5": 0.17777777777777776,
+    "auc3": 0.1037037037037037
+  },
+  "stairs/window-02": {
+    "scene": "stairs",
+    "window": "window-02",
+    "num_frames": 10,
+    "auc30": 0.4925925925925928,
+    "auc15": 0.2533333333333333,
+    "auc5": 0.013333333333333332,
+    "auc3": 0.007407407407407408
+  },
+  "stairs/window-03": {
+    "scene": "stairs",
+    "window": "window-03",
+    "num_frames": 10,
+    "auc30": 0.45851851851851855,
+    "auc15": 0.27851851851851855,
+    "auc5": 0.08444444444444445,
+    "auc3": 0.044444444444444446
+  },
+  "stairs/window-04": {
+    "scene": "stairs",
+    "window": "window-04",
+    "num_frames": 10,
+    "auc30": 0.38962962962962955,
+    "auc15": 0.17925925925925926,
+    "auc5": 0.03111111111111111,
+    "auc3": 0.014814814814814815
+  },
+  "stairs/window-05": {
+    "scene": "stairs",
+    "window": "window-05",
+    "num_frames": 10,
+    "auc30": 0.07037037037037037,
+    "auc15": 0.02074074074074074,
+    "auc5": 0.013333333333333332,
+    "auc3": 0.007407407407407408
+  },
+  "stairs/window-06": {
+    "scene": "stairs",
+    "window": "window-06",
+    "num_frames": 10,
+    "auc30": 0.3274074074074073,
+    "auc15": 0.18962962962962962,
+    "auc5": 0.048888888888888885,
+    "auc3": 0.022222222222222223
+  },
+  "stairs/window-07": {
+    "scene": "stairs",
+    "window": "window-07",
+    "num_frames": 10,
+    "auc30": 0.3051851851851852,
+    "auc15": 0.04444444444444444,
+    "auc5": 0.0,
+    "auc3": 0.0
+  },
+  "stairs/window-08": {
+    "scene": "stairs",
+    "window": "window-08",
+    "num_frames": 10,
+    "auc30": 0.3533333333333332,
+    "auc15": 0.14518518518518517,
+    "auc5": 0.013333333333333332,
+    "auc3": 0.0
+  },
+  "stairs/window-09": {
+    "scene": "stairs",
+    "window": "window-09",
+    "num_frames": 10,
+    "auc30": 0.16148148148148145,
+    "auc15": 0.06518518518518518,
+    "auc5": 0.008888888888888889,
+    "auc3": 0.0
+  },
+  "__mean__": {
+    "auc30": 0.4293650793650794,
+    "auc15": 0.2467089947089947,
+    "auc5": 0.06533333333333333,
+    "auc3": 0.028359788359788363
+  }
+}

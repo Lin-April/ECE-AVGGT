@@ -1,0 +1,296 @@
+{
+  "model": "VGGT",
+  "use_avggt": true,
+  "subsample_factor": 4,
+  "tearly": 9,
+  "preserve_diagonal": false,
+  "frames_per_window": 5,
+  "device": "cuda",
+  "dtype": "torch.bfloat16",
+  "num_samples": 70,
+  "total_inference_seconds": 26.592769095674157,
+  "mean_inference_seconds": 0.37989670136677367,
+  "median_inference_seconds": 0.3832656051963568,
+  "samples": {
+    "chess/window-00": {
+      "num_frames": 5,
+      "inference_seconds": 0.4484391435980797
+    },
+    "chess/window-01": {
+      "num_frames": 5,
+      "inference_seconds": 0.45640513580292463
+    },
+    "chess/window-02": {
+      "num_frames": 5,
+      "inference_seconds": 0.36431613471359015
+    },
+    "chess/window-03": {
+      "num_frames": 5,
+      "inference_seconds": 0.3898093160241842
+    },
+    "chess/window-04": {
+      "num_frames": 5,
+      "inference_seconds": 0.3869890868663788
+    },
+    "chess/window-05": {
+      "num_frames": 5,
+      "inference_seconds": 0.40941551607102156
+    },
+    "chess/window-06": {
+      "num_frames": 5,
+      "inference_seconds": 0.41747118905186653
+    },
+    "chess/window-07": {
+      "num_frames": 5,
+      "inference_seconds": 0.3999487590044737
+    },
+    "chess/window-08": {
+      "num_frames": 5,
+      "inference_seconds": 0.5080675110220909
+    },
+    "chess/window-09": {
+      "num_frames": 5,
+      "inference_seconds": 0.35979245975613594
+    },
+    "fire/window-00": {
+      "num_frames": 5,
+      "inference_seconds": 0.38716124184429646
+    },
+    "fire/window-01": {
+      "num_frames": 5,
+      "inference_seconds": 0.3795642117038369
+    },
+    "fire/window-02": {
+      "num_frames": 5,
+      "inference_seconds": 0.38339378125965595
+    },
+    "fire/window-03": {
+      "num_frames": 5,
+      "inference_seconds": 0.41906796488910913
+    },
+    "fire/window-04": {
+      "num_frames": 5,
+      "inference_seconds": 0.36555407475680113
+    },
+    "fire/window-05": {
+      "num_frames": 5,
+      "inference_seconds": 0.3831908795982599
+    },
+    "fire/window-06": {
+      "num_frames": 5,
+      "inference_seconds": 0.4348411504179239
+    },
+    "fire/window-07": {
+      "num_frames": 5,
+      "inference_seconds": 0.3691270500421524
+    },
+    "fire/window-08": {
+      "num_frames": 5,
+      "inference_seconds": 0.29959647450596094
+    },
+    "fire/window-09": {
+      "num_frames": 5,
+      "inference_seconds": 0.4348278362303972
+    },
+    "heads/window-00": {
+      "num_frames": 5,
+      "inference_seconds": 0.39038287475705147
+    },
+    "heads/window-01": {
+      "num_frames": 5,
+      "inference_seconds": 0.38897143863141537
+    },
+    "heads/window-02": {
+      "num_frames": 5,
+      "inference_seconds": 0.3903361773118377
+    },
+    "heads/window-03": {
+      "num_frames": 5,
+      "inference_seconds": 0.3017013166099787
+    },
+    "heads/window-04": {
+      "num_frames": 5,
+      "inference_seconds": 0.3897169725969434
+    },
+    "heads/window-05": {
+      "num_frames": 5,
+      "inference_seconds": 0.2980538010597229
+    },
+    "heads/window-06": {
+      "num_frames": 5,
+      "inference_seconds": 0.3859614431858063
+    },
+    "heads/window-07": {
+      "num_frames": 5,
+      "inference_seconds": 0.423705393448472
+    },
+    "heads/window-08": {
+      "num_frames": 5,
+      "inference_seconds": 0.3854883126914501
+    },
+    "heads/window-09": {
+      "num_frames": 5,
+      "inference_seconds": 0.37179858703166246
+    },
+    "office/window-00": {
+      "num_frames": 5,
+      "inference_seconds": 0.36906062439084053
+    },
+    "office/window-01": {
+      "num_frames": 5,
+      "inference_seconds": 0.38096834532916546
+    },
+    "office/window-02": {
+      "num_frames": 5,
+      "inference_seconds": 0.3827154543250799
+    },
+    "office/window-03": {
+      "num_frames": 5,
+      "inference_seconds": 0.3047491926699877
+    },
+    "office/window-04": {
+      "num_frames": 5,
+      "inference_seconds": 0.2996789487078786
+    },
+    "office/window-05": {
+      "num_frames": 5,
+      "inference_seconds": 0.30046852584928274
+    },
+    "office/window-06": {
+      "num_frames": 5,
+      "inference_seconds": 0.3710602270439267
+    },
+    "office/window-07": {
+      "num_frames": 5,
+      "inference_seconds": 0.49305163975805044
+    },
+    "office/window-08": {
+      "num_frames": 5,
+      "inference_seconds": 0.4239809801802039
+    },
+    "office/window-09": {
+      "num_frames": 5,
+      "inference_seconds": 0.3833403307944536
+    },
+    "pumpkin/window-00": {
+      "num_frames": 5,
+      "inference_seconds": 0.4232441131025553
+    },
+    "pumpkin/window-01": {
+      "num_frames": 5,
+      "inference_seconds": 0.3773114141076803
+    },
+    "pumpkin/window-02": {
+      "num_frames": 5,
+      "inference_seconds": 0.3649952532723546
+    },
+    "pumpkin/window-03": {
+      "num_frames": 5,
+      "inference_seconds": 0.38956390507519245
+    },
+    "pumpkin/window-04": {
+      "num_frames": 5,
+      "inference_seconds": 0.38541743997484446
+    },
+    "pumpkin/window-05": {
+      "num_frames": 5,
+      "inference_seconds": 0.3369303420186043
+    },
+    "pumpkin/window-06": {
+      "num_frames": 5,
+      "inference_seconds": 0.36404854990541935
+    },
+    "pumpkin/window-07": {
+      "num_frames": 5,
+      "inference_seconds": 0.3854809394106269
+    },
+    "pumpkin/window-08": {
+      "num_frames": 5,
+      "inference_seconds": 0.3888108255341649
+    },
+    "pumpkin/window-09": {
+      "num_frames": 5,
+      "inference_seconds": 0.375613478012383
+    },
+    "redkitchen/window-00": {
+      "num_frames": 5,
+      "inference_seconds": 0.38872560672461987
+    },
+    "redkitchen/window-01": {
+      "num_frames": 5,
+      "inference_seconds": 0.41605795733630657
+    },
+    "redkitchen/window-02": {
+      "num_frames": 5,
+      "inference_seconds": 0.3661860330030322
+    },
+    "redkitchen/window-03": {
+      "num_frames": 5,
+      "inference_seconds": 0.32798990420997143
+    },
+    "redkitchen/window-04": {
+      "num_frames": 5,
+      "inference_seconds": 0.43267298862338066
+    },
+    "redkitchen/window-05": {
+      "num_frames": 5,
+      "inference_seconds": 0.36773292534053326
+    },
+    "redkitchen/window-06": {
+      "num_frames": 5,
+      "inference_seconds": 0.3599666766822338
+    },
+    "redkitchen/window-07": {
+      "num_frames": 5,
+      "inference_seconds": 0.3854110259562731
+    },
+    "redkitchen/window-08": {
+      "num_frames": 5,
+      "inference_seconds": 0.4952473221346736
+    },
+    "redkitchen/window-09": {
+      "num_frames": 5,
+      "inference_seconds": 0.2999434592202306
+    },
+    "stairs/window-00": {
+      "num_frames": 5,
+      "inference_seconds": 0.29971050936728716
+    },
+    "stairs/window-01": {
+      "num_frames": 5,
+      "inference_seconds": 0.3198450459167361
+    },
+    "stairs/window-02": {
+      "num_frames": 5,
+      "inference_seconds": 0.4202467128634453
+    },
+    "stairs/window-03": {
+      "num_frames": 5,
+      "inference_seconds": 0.37539188005030155
+    },
+    "stairs/window-04": {
+      "num_frames": 5,
+      "inference_seconds": 0.37555603962391615
+    },
+    "stairs/window-05": {
+      "num_frames": 5,
+      "inference_seconds": 0.36922178696841
+    },
+    "stairs/window-06": {
+      "num_frames": 5,
+      "inference_seconds": 0.38783138152211905
+    },
+    "stairs/window-07": {
+      "num_frames": 5,
+      "inference_seconds": 0.3003714745864272
+    },
+    "stairs/window-08": {
+      "num_frames": 5,
+      "inference_seconds": 0.2993334997445345
+    },
+    "stairs/window-09": {
+      "num_frames": 5,
+      "inference_seconds": 0.3817411018535495
+    }
+  }
+}
