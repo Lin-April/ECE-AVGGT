@@ -62,6 +62,11 @@ def parse_args():
         action="store_true",
         help="Add explicit diagonal self-attention terms in AVGGT.",
     )
+
+    parser.add_argument("--ablate-idx", type=int, default=None,
+                        help="Index of the single layer to ablate to frame-scope.")
+    parser.add_argument("--limit-scenes", type=str, default=None,
+                        help="Comma-separated list of scene IDs to evaluate.")
     args = parser.parse_args()
     if args.frames < 2:
         parser.error("--frames must be at least 2")
@@ -89,6 +94,13 @@ def output_suffix(args):
 
 def output_paths(data_root, args):
     suffix = output_suffix(args)
+    if hasattr(args, 'ablate_idx') and args.ablate_idx is not None:
+        suffix += f"_ablate{args.ablate_idx}"
+        return {
+            "results": data_root / f"results_ablate/re10k_manifest_eval{suffix}.json",
+            "manifest": data_root / f"results_ablate/re10k_manifest_eval_frames{suffix}.csv",
+            "profile": data_root / f"results_ablate/re10k_profile{suffix}.json",
+        }
     return {
         "results": data_root / f"results/re10k_manifest_eval{suffix}.json",
         "manifest": data_root / f"results/re10k_manifest_eval_frames{suffix}.csv",
@@ -326,7 +338,14 @@ def main():
     torch.manual_seed(SEED)
     np.random.seed(SEED)
 
-    samples = read_manifest(data_root, args.frames, args.sample_mode)
+    samples = None
+    all_samples = read_manifest(data_root, args.frames, args.sample_mode)
+    if args.limit_scenes:
+        target_ids = set(args.limit_scenes.split(","))
+        samples = [s for s in all_samples if s["scene_id"] in target_ids]
+        print(f"Limiting evaluation to {len(samples)} specific scenes.")
+    else:
+        samples = all_samples
     print(f"Loaded {len(samples)} scenes from {dataset_dir(data_root) / MANIFEST_NAME}")
     print(f"Evaluating {args.frames} frames per scene ({args.sample_mode})")
 
@@ -339,18 +358,20 @@ def main():
     print("Loading model...")
     model = VGGT.from_pretrained(MODEL_NAME_OR_PATH)
     model.eval().to(device)
-    if args.avggt:
+    if args.avggt or args.ablate_idx is not None:
         from avggt import apply_avggt
 
         apply_avggt(
             model,
             subsample_factor=args.subsample_factor,
-            tearly=args.tearly,
+            tearly=args.tearly if args.ablate_idx is None else 0,  # 如果是消融模式，tearly 设为 0
+            ablate_idx=args.ablate_idx,  # 传入新参数
             preserve_diagonal=args.preserve_diagonal,
         )
         print(
             "Applied AVGGT patch: "
             f"factor={args.subsample_factor}, tearly={args.tearly}, "
+            f"ablate_idx={args.ablate_idx}"
             f"preserve_diagonal={args.preserve_diagonal}"
         )
     print("Model loaded.")

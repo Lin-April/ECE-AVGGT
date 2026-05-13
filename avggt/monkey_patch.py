@@ -17,6 +17,7 @@ def apply_avggt(
     model,
     subsample_factor=4,
     tearly=9,
+    ablate_idx=None,
     keep_first_frame=True,
     use_mean=True,
     preserve_diagonal=False,
@@ -39,6 +40,7 @@ def apply_avggt(
 
     aggregator = model.aggregator
     aggregator.avggt_tearly = int(tearly)
+    aggregator.avggt_ablate_idx = ablate_idx
     aggregator.avggt_subsample_factor = int(subsample_factor)
     aggregator.avggt_keep_first_frame = bool(keep_first_frame)
     aggregator.avggt_use_mean = bool(use_mean)
@@ -59,7 +61,9 @@ def _process_global_attention(self, tokens, B, S, P, C, global_idx, pos=None):
         if self.training:
             raise RuntimeError("AVGGT monkey patch is intended for inference only")
 
-        if global_idx < self.avggt_tearly:
+        if hasattr(self, "avggt_ablate_idx") and self.avggt_ablate_idx == global_idx:
+            tokens = _run_global_block_as_frame(self, tokens, B, S, P, C, global_idx, pos)
+        elif global_idx < self.avggt_tearly and not hasattr(self, "avggt_ablate_idx"):
             tokens = _run_global_block_as_frame(self, tokens, B, S, P, C, global_idx, pos)
         else:
             if tokens.shape != (B, S * P, C):

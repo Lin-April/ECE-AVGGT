@@ -1,0 +1,37 @@
+{
+  "model": "VGGT",
+  "use_avggt": false,
+  "subsample_factor": null,
+  "tearly": null,
+  "preserve_diagonal": null,
+  "frames_per_scene": 20,
+  "sample_mode": "uniform",
+  "device": "cuda",
+  "dtype": "torch.bfloat16",
+  "num_samples": 5,
+  "total_inference_seconds": 7.343891907483339,
+  "mean_inference_seconds": 1.468778381496668,
+  "median_inference_seconds": 0.881844355724752,
+  "samples": {
+    "004dd4b46a06e5be": {
+      "num_frames": 20,
+      "inference_seconds": 3.824101796373725
+    },
+    "00e8df74b6805da7": {
+      "num_frames": 20,
+      "inference_seconds": 0.881844355724752
+    },
+    "0588138dfec165a1": {
+      "num_frames": 20,
+      "inference_seconds": 0.8727136207744479
+    },
+    "094fd37f09dc318c": {
+      "num_frames": 20,
+      "inference_seconds": 0.8781822621822357
+    },
+    "0c6b149da098b121": {
+      "num_frames": 20,
+      "inference_seconds": 0.8870498724281788
+    }
+  }
+}

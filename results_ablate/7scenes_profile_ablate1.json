@@ -1,0 +1,28 @@
+{
+  "model": "VGGT",
+  "use_avggt": false,
+  "subsample_factor": null,
+  "tearly": null,
+  "preserve_diagonal": null,
+  "frames_per_window": 20,
+  "device": "cuda",
+  "dtype": "torch.bfloat16",
+  "num_samples": 3,
+  "total_inference_seconds": 6.118663671426475,
+  "mean_inference_seconds": 2.0395545571421585,
+  "median_inference_seconds": 1.1425851192325354,
+  "samples": {
+    "chess/window-00": {
+      "num_frames": 20,
+      "inference_seconds": 3.8380284840241075
+    },
+    "fire/window-01": {
+      "num_frames": 20,
+      "inference_seconds": 1.1425851192325354
+    },
+    "pumpkin/window-02": {
+      "num_frames": 20,
+      "inference_seconds": 1.1380500681698322
+    }
+  }
+}
