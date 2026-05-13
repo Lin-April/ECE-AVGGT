@@ -21,6 +21,8 @@ def apply_avggt(
     keep_first_frame=True,
     use_mean=True,
     preserve_diagonal=False,
+    routing=None,
+    per_layer_factor=None,
 ):
     """Patch a loaded VGGT model with AVGGT-style inference behavior.
 
@@ -34,6 +36,12 @@ def apply_avggt(
         preserve_diagonal: Add explicit self-attention logits for every query.
             This is closer to the paper, but it materializes attention logits and
             can use much more memory than the default SDPA path.
+        routing: Optional per-global-layer actions. Each action must be one of
+            "skip", "frame", or "kv". When omitted, the original AVGGT
+            tearly/subsample_factor behavior is preserved.
+        per_layer_factor: Optional per-global-layer K/V subsampling factors for
+            "kv" actions. When omitted, ``subsample_factor`` is used for every
+            K/V layer.
     """
     if not hasattr(model, "aggregator"):
         raise TypeError("apply_avggt expects a VGGT model with an aggregator")
@@ -45,6 +53,13 @@ def apply_avggt(
     aggregator.avggt_keep_first_frame = bool(keep_first_frame)
     aggregator.avggt_use_mean = bool(use_mean)
     aggregator.avggt_preserve_diagonal = bool(preserve_diagonal)
+    num_global_blocks = len(aggregator.global_blocks)
+    aggregator.avggt_routing = _validate_routing(routing, num_global_blocks)
+    aggregator.avggt_per_layer_factor = _validate_per_layer_factor(
+        per_layer_factor,
+        num_global_blocks,
+        int(subsample_factor),
+    )
 
     if not hasattr(aggregator, "_vggt_process_global_attention"):
         aggregator._vggt_process_global_attention = aggregator._process_global_attention
@@ -61,11 +76,12 @@ def _process_global_attention(self, tokens, B, S, P, C, global_idx, pos=None):
         if self.training:
             raise RuntimeError("AVGGT monkey patch is intended for inference only")
 
-        if hasattr(self, "avggt_ablate_idx") and self.avggt_ablate_idx == global_idx:
+        action = _layer_action(self, global_idx)
+        if action == "skip":
+            pass
+        elif action == "frame":
             tokens = _run_global_block_as_frame(self, tokens, B, S, P, C, global_idx, pos)
-        elif global_idx < self.avggt_tearly and not hasattr(self, "avggt_ablate_idx"):
-            tokens = _run_global_block_as_frame(self, tokens, B, S, P, C, global_idx, pos)
-        else:
+        elif action == "kv":
             if tokens.shape != (B, S * P, C):
                 tokens = tokens.view(B, S, P, C).view(B, S * P, C)
 
@@ -74,7 +90,7 @@ def _process_global_attention(self, tokens, B, S, P, C, global_idx, pos=None):
                 global_pos = global_pos.view(B, S, P, 2).view(B, S * P, 2)
 
             block = self.global_blocks[global_idx]
-            factor = self.avggt_subsample_factor
+            factor = self.avggt_per_layer_factor[global_idx]
             if factor <= 1:
                 tokens = block(tokens, pos=global_pos)
             else:
@@ -91,11 +107,52 @@ def _process_global_attention(self, tokens, B, S, P, C, global_idx, pos=None):
                     use_mean=self.avggt_use_mean,
                     preserve_diagonal=self.avggt_preserve_diagonal,
                 )
+        else:
+            raise RuntimeError(f"Unsupported AVGGT routing action: {action}")
 
         global_idx += 1
         intermediates.append(tokens.view(B, S, P, C))
 
     return tokens, global_idx, intermediates
+
+
+def _validate_routing(routing, num_layers):
+    if routing is None:
+        return None
+    routing = list(routing)
+    if len(routing) != num_layers:
+        raise ValueError(f"routing must have {num_layers} entries, got {len(routing)}")
+    supported = {"skip", "frame", "kv"}
+    invalid = sorted({action for action in routing if action not in supported})
+    if invalid:
+        raise ValueError(f"routing actions must be one of {sorted(supported)}, got {invalid}")
+    return routing
+
+
+def _validate_per_layer_factor(per_layer_factor, num_layers, default_factor):
+    if per_layer_factor is None:
+        factors = [default_factor] * num_layers
+    else:
+        factors = list(per_layer_factor)
+        if len(factors) != num_layers:
+            raise ValueError(f"per_layer_factor must have {num_layers} entries, got {len(factors)}")
+        factors = [default_factor if factor is None else int(factor) for factor in factors]
+
+    for factor in factors:
+        _factor_to_stride(factor)
+    return factors
+
+
+def _layer_action(aggregator, global_idx):
+    if getattr(aggregator, "avggt_ablate_idx", None) is not None:
+        if aggregator.avggt_ablate_idx == global_idx:
+            return "frame"
+        return "kv"
+    if aggregator.avggt_routing is not None:
+        return aggregator.avggt_routing[global_idx]
+    if global_idx < aggregator.avggt_tearly:
+        return "frame"
+    return "kv"
 
 
 def _run_global_block_as_frame(aggregator, tokens, B, S, P, C, global_idx, pos):
