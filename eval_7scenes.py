@@ -43,6 +43,7 @@ torch.backends.cudnn.allow_tf32 = False
 def parse_args():
     parser = argparse.ArgumentParser(description="Evaluate VGGT camera poses on 7-Scenes.")
     parser.add_argument("--data-root", type=Path, default=PROJECT_ROOT, help="Root containing 7-scenes-final and results/.")
+    parser.add_argument("--results-dir", type=Path, default=None, help="Directory for output files. Defaults to DATA_ROOT/results.")
     parser.add_argument("--frames", type=int, default=DEFAULT_FRAMES_PER_WINDOW, help="Frames sampled per window.")
     parser.add_argument("--profile", action="store_true", help="Write inference-time profile JSON.")
     parser.add_argument("--avggt", action="store_true", help="Apply the AVGGT inference-time patch.")
@@ -68,7 +69,11 @@ def dataset_dir(data_root) -> Path:
 
 
 def output_suffix(args):
-    suffix = f"_avggt{args.subsample_factor}" if args.avggt else ""
+    method_suffix = getattr(args, "method_suffix", None)
+    if method_suffix:
+        suffix = f"_{method_suffix}"
+    else:
+        suffix = f"_avggt{args.subsample_factor}" if args.avggt else ""
     if args.frames != DEFAULT_FRAMES_PER_WINDOW:
         suffix += f"_f{args.frames}"
     return suffix
@@ -83,10 +88,17 @@ def output_paths(data_root, args):
             "manifest": data_root / f"results_ablate/7scenes_manifest_eval_frames{suffix}.csv",
             "profile": data_root / f"results_ablate/7scenes_profile{suffix}.json",
         }
+    results_dir = getattr(args, "results_dir", None)
+    if results_dir is None:
+        results_dir = data_root / "results"
+    else:
+        results_dir = Path(results_dir)
+        if not results_dir.is_absolute():
+            results_dir = data_root / results_dir
     return {
-        "results": data_root / f"results/7scenes_manifest_eval{suffix}.json",
-        "manifest": data_root / f"results/7scenes_manifest_eval_frames{suffix}.csv",
-        "profile": data_root / f"results/7scenes_profile{suffix}.json",
+        "results": results_dir / f"7scenes_manifest_eval{suffix}.json",
+        "manifest": results_dir / f"7scenes_manifest_eval_frames{suffix}.csv",
+        "profile": results_dir / f"7scenes_profile{suffix}.json",
     }
 
 
@@ -265,9 +277,12 @@ def write_profile(path, profile_rows, args, device, dtype):
     profile = {
         "model": "VGGT",
         "use_avggt": args.avggt,
+        "method_suffix": getattr(args, "method_suffix", None),
         "subsample_factor": args.subsample_factor if args.avggt else None,
         "tearly": args.tearly if args.avggt else None,
         "preserve_diagonal": args.preserve_diagonal if args.avggt else None,
+        "routing": getattr(args, "routing", None),
+        "per_layer_factor": getattr(args, "per_layer_factor", None),
         "frames_per_window": args.frames,
         "device": str(device),
         "dtype": str(dtype),
