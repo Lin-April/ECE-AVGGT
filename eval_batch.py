@@ -12,6 +12,7 @@ import torch
 
 import eval_7scenes
 import eval_re10k
+from avggt.budgets import make_budget
 from vggt.models.vggt import VGGT
 
 
@@ -26,6 +27,12 @@ DATASETS = ("re10k", "7scenes")
 def parse_args():
     parser = argparse.ArgumentParser(description="Run baseline and AVGGT evals with one loaded VGGT model.")
     parser.add_argument("--data-root", type=Path, default=PROJECT_ROOT, help="Root containing datasets and results/.")
+    parser.add_argument(
+        "--results-dir",
+        type=Path,
+        default=None,
+        help="Directory for output JSON/CSV/profile files. Defaults to DATA_ROOT/results.",
+    )
     parser.add_argument("--datasets", nargs="+", choices=DATASETS, default=list(DATASETS), help="Datasets to evaluate.")
     parser.add_argument("--frames", nargs="+", type=int, default=None, help="Override frame counts for every selected dataset.")
     parser.add_argument(
@@ -62,6 +69,20 @@ def parse_args():
     parser.add_argument("--skip-existing", action="store_true", help="Skip configs whose accuracy and profile files already exist.")
     parser.add_argument("--warmup-samples", type=int, default=0, help="Unrecorded warmup samples per config.")
     parser.add_argument("--no-baseline", action="store_true", help="Only run AVGGT configs.")
+    parser.add_argument(
+        "--bi-routing",
+        type=Path,
+        default=None,
+        help="BI JSON containing either a routing list or BI scores used to derive skip/frame/kv routing.",
+    )
+    parser.add_argument(
+        "--budget-fn",
+        choices=("uniform", "linear", "exp"),
+        default=None,
+        help="Optional per-layer K/V budget schedule for Pyramid or Full runs.",
+    )
+    parser.add_argument("--n-skip", type=int, default=5, help="Lowest-BI layers routed to skip when deriving routing.")
+    parser.add_argument("--n-frame", type=int, default=10, help="Next-lowest-BI layers routed to frame when deriving routing.")
     args = parser.parse_args()
     frame_groups = [args.re10k_frames, args.seven_scenes_frames]
     if args.frames is not None:
@@ -81,9 +102,10 @@ def frames_for_dataset(args, dataset):
     return args.seven_scenes_frames
 
 
-def make_eval_args(args, frames, avggt=False, factor=4):
+def make_eval_args(args, frames, avggt=False, factor=4, method_suffix=None, routing=None, per_layer_factor=None):
     return SimpleNamespace(
         data_root=args.data_root,
+        results_dir=args.results_dir,
         frames=frames,
         sample_mode=args.sample_mode,
         profile=True,
@@ -91,6 +113,9 @@ def make_eval_args(args, frames, avggt=False, factor=4):
         subsample_factor=factor,
         tearly=args.tearly,
         preserve_diagonal=args.preserve_diagonal,
+        method_suffix=method_suffix,
+        routing=routing,
+        per_layer_factor=per_layer_factor,
     )
 
 
@@ -135,7 +160,15 @@ def warmup_7scenes(model, samples, data_root, device, dtype, count):
 
 
 def run_re10k(model, data_root, args, device, dtype):
-    eval_args = make_eval_args(args, args.current_frames, args.current_avggt, args.current_factor)
+    eval_args = make_eval_args(
+        args,
+        args.current_frames,
+        args.current_avggt,
+        args.current_factor,
+        args.current_method_suffix,
+        args.current_routing,
+        args.current_per_layer_factor,
+    )
     paths = eval_re10k.output_paths(data_root, eval_args)
     if args.skip_existing and files_exist(paths):
         print(f"Skipping existing re10k frames={eval_args.frames} {label(eval_args)}")
@@ -189,7 +222,15 @@ def run_re10k(model, data_root, args, device, dtype):
 
 
 def run_7scenes(model, data_root, args, device, dtype):
-    eval_args = make_eval_args(args, args.current_frames, args.current_avggt, args.current_factor)
+    eval_args = make_eval_args(
+        args,
+        args.current_frames,
+        args.current_avggt,
+        args.current_factor,
+        args.current_method_suffix,
+        args.current_routing,
+        args.current_per_layer_factor,
+    )
     paths = eval_7scenes.output_paths(data_root, eval_args)
     if args.skip_existing and files_exist(paths):
         print(f"Skipping existing 7scenes frames={eval_args.frames} {label(eval_args)}")
@@ -245,12 +286,14 @@ def run_7scenes(model, data_root, args, device, dtype):
 
 
 def label(eval_args):
+    if getattr(eval_args, "method_suffix", None):
+        return eval_args.method_suffix
     if eval_args.avggt:
         return f"AVGGT-{eval_args.subsample_factor}"
     return "VGGT"
 
 
-def apply_avggt(model, args, factor):
+def apply_avggt(model, args, factor, routing=None, per_layer_factor=None, label_text=None):
     from avggt import apply_avggt as patch_model
 
     patch_model(
@@ -258,17 +301,36 @@ def apply_avggt(model, args, factor):
         subsample_factor=factor,
         tearly=args.tearly,
         preserve_diagonal=args.preserve_diagonal,
+        routing=routing,
+        per_layer_factor=per_layer_factor,
     )
     print(
         "Applied AVGGT patch: "
-        f"factor={factor}, tearly={args.tearly}, preserve_diagonal={args.preserve_diagonal}"
+        f"method={label_text or f'AVGGT-{factor}'}, factor={factor}, tearly={args.tearly}, "
+        f"preserve_diagonal={args.preserve_diagonal}"
     )
 
 
-def run_config(model, data_root, args, device, dtype, dataset, frames, avggt, factor):
+def run_config(
+    model,
+    data_root,
+    args,
+    device,
+    dtype,
+    dataset,
+    frames,
+    avggt,
+    factor,
+    method_suffix=None,
+    routing=None,
+    per_layer_factor=None,
+):
     args.current_frames = frames
     args.current_avggt = avggt
     args.current_factor = factor
+    args.current_method_suffix = method_suffix
+    args.current_routing = routing
+    args.current_per_layer_factor = per_layer_factor
     try:
         if dataset == "re10k":
             return run_re10k(model, data_root, args, device, dtype)
@@ -276,6 +338,34 @@ def run_config(model, data_root, args, device, dtype, dataset, frames, avggt, fa
     except ValueError as exc:
         print(f"Skipping {dataset} frames={frames} {label(make_eval_args(args, frames, avggt, factor))}: {exc}")
         return "skipped"
+
+
+def load_bi_routing(path, n_skip, n_frame):
+    with path.expanduser().open("r", encoding="utf-8") as f:
+        payload = json.load(f)
+
+    if isinstance(payload, dict) and "routing" in payload:
+        return list(payload["routing"])
+    if isinstance(payload, dict):
+        scores = payload.get("bi_scores", payload.get("scores", payload.get("bi")))
+    else:
+        scores = payload
+    if scores is None:
+        raise ValueError(f"{path} must contain 'routing', 'bi_scores', 'scores', or a raw score list")
+
+    scores = np.array(scores, dtype=float)
+    if scores.ndim != 1:
+        raise ValueError("BI scores must be a one-dimensional list")
+    if n_skip < 0 or n_frame < 0 or n_skip + n_frame > len(scores):
+        raise ValueError("--n-skip and --n-frame must be non-negative and fit within the number of BI scores")
+
+    order = np.argsort(scores)
+    routing = ["kv"] * len(scores)
+    for layer_idx in order[:n_skip]:
+        routing[int(layer_idx)] = "skip"
+    for layer_idx in order[n_skip : n_skip + n_frame]:
+        routing[int(layer_idx)] = "frame"
+    return routing
 
 
 def main():
@@ -291,6 +381,19 @@ def main():
     model = VGGT.from_pretrained(MODEL_NAME_OR_PATH)
     model.eval().to(device)
     print("Model loaded.")
+    num_global_blocks = len(model.aggregator.global_blocks)
+
+    bi_routing = None
+    if args.bi_routing is not None:
+        bi_routing = load_bi_routing(args.bi_routing, args.n_skip, args.n_frame)
+        if len(bi_routing) != num_global_blocks:
+            raise ValueError(
+                f"BI routing has {len(bi_routing)} layers, but model has {num_global_blocks} global blocks"
+            )
+
+    pyramid_budget = None
+    if args.budget_fn is not None:
+        pyramid_budget = make_budget(args.budget_fn, num_global_blocks, base_factor=4)
 
     counts = {"done": 0, "skipped": 0}
     if not args.no_baseline:
@@ -304,6 +407,62 @@ def main():
         for dataset in args.datasets:
             for frames in frames_for_dataset(args, dataset):
                 status = run_config(model, data_root, args, device, dtype, dataset, frames, True, factor)
+                counts[status] += 1
+
+    new_methods = []
+    if bi_routing is not None:
+        new_methods.append(
+            {
+                "name": "bi",
+                "factor": 4,
+                "routing": bi_routing,
+                "per_layer_factor": [4] * num_global_blocks,
+            }
+        )
+    if pyramid_budget is not None:
+        new_methods.append(
+            {
+                "name": f"pyramid_{args.budget_fn}",
+                "factor": 4,
+                "routing": None,
+                "per_layer_factor": pyramid_budget,
+            }
+        )
+    if bi_routing is not None and pyramid_budget is not None:
+        new_methods.append(
+            {
+                "name": f"full_{args.budget_fn}",
+                "factor": 4,
+                "routing": bi_routing,
+                "per_layer_factor": pyramid_budget,
+            }
+        )
+
+    for method in new_methods:
+        apply_avggt(
+            model,
+            args,
+            method["factor"],
+            routing=method["routing"],
+            per_layer_factor=method["per_layer_factor"],
+            label_text=method["name"],
+        )
+        for dataset in args.datasets:
+            for frames in frames_for_dataset(args, dataset):
+                status = run_config(
+                    model,
+                    data_root,
+                    args,
+                    device,
+                    dtype,
+                    dataset,
+                    frames,
+                    True,
+                    method["factor"],
+                    method_suffix=method["name"],
+                    routing=method["routing"],
+                    per_layer_factor=method["per_layer_factor"],
+                )
                 counts[status] += 1
 
     print(f"\nBatch complete: {counts['done']} finished, {counts['skipped']} skipped.")
