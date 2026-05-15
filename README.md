@@ -135,22 +135,6 @@ Summarize BI/Pyramid ablation results:
 uv run python analyze_bi_pyramid_results.py
 ```
 
-## Final Report
-
-The final report source is in:
-
-```text
-report/main.tex
-report/references.bib
-report/results/plots/
-```
-
-The compiled PDF is:
-
-```text
-report/Optimizing_and_Analyzing_VGGT_for_Multi_View_3D_Reconstruction.pdf
-```
-
 ## Notes
 
 - RealEstate10K supports up to 60 frames per prepared scene.
